@@ -1,16 +1,38 @@
 import React, { Component } from 'react'
 import Post from "./components/Post"
+import Popup from "./components/Popup"
+import ActionButton from "./components/ActionButton"
 
 class App extends Component {
   constructor() {
     super()
     this.state = {card: 0,}
     this.togglePopup = this.togglePopup.bind(this);
+    this.closePopup = this.closePopup.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  // don't load anything for a second
+  // more diversity of content
+  // text area answering box should be clearing responses and the keyboard shouldn't cover it. https://stackoverflow.com/questions/51606099/how-to-detect-when-keyboard-is-opened-or-closed-in-react-native
+  // send clicks to the backend
+
   togglePopup() {
-    this.setState({card: 1});
-    console.log(this.state.card)
+    var newCard = this.state.card + 1
+    this.setState({card: newCard});
+  }
+
+  handleChange(e){
+    this.setState({value: e});
+  }
+
+  handleSubmit(){
+    // send to the backend
+  }
+
+  closePopup(){
+    this.setState({card: 0})
   }
 
   handleSendData(data) {
@@ -25,8 +47,9 @@ class App extends Component {
   render() {
     return (
       <div className="app">
-        <div className={this.state.card ? 'overlayCard' : 'd-none'}>
-            <p>Tandem Life</p>
+        <Popup card={this.state.card} togglePopup={this.togglePopup} closePopup = {this.closePopup} value={this.value} handleChange={this.handleChange} handleSubmit={this.handleSubmit}/>
+        <div>
+
         </div>
         <div className={this.state.card ? 'black' : ''}></div>
         <Post
@@ -54,11 +77,7 @@ class App extends Component {
           likes="155"
           comments="55"
         />
-        <div className="seeMoreContainer d-flex">
-          <div className="seeMoreButton m-auto">
-            <p className="m-0"onClick={this.togglePopup}>SEE MORE</p>
-          </div>
-        </div>
+        <ActionButton action={this.togglePopup} text="SEE MORE" specId="see-more"/>
       </div>
     )
   }

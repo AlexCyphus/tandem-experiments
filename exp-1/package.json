@@ -1,4 +1,5 @@
 {
+  "homepage": "https://tranquil-everglades-66333.herokuapp.com/",
   "name": "test-experiment",
   "version": "0.1.0",
   "private": true,
@@ -15,10 +16,12 @@
     "react-scripts": "3.4.3"
   },
   "scripts": {
-    "dev": "react-scripts start",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "heroku-postbuild": "npm run build"
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"

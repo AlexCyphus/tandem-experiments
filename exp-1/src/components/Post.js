@@ -17,7 +17,7 @@ function Post({name, time, message, image=false, audio=false, likes, comments}) 
         <div className="inner-post">
           <div className="row w-100 post-poster m-0">
             <img src="/logo192.png" className="col-auto icon-image"/>
-            <p className="col-auto m-auto p-0 name">{name}</p>
+            <p className="col-auto m-auto name">{name}</p>
             <p className="col text-right m-auto time">{time}m</p>
           </div>
           <p className="w-100 m-0 message">{message}</p>
