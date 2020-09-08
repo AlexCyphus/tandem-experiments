@@ -4,6 +4,13 @@ import Post from "./components/Post"
 class App extends Component {
   constructor() {
     super()
+    this.state = {card: 0,}
+    this.togglePopup = this.togglePopup.bind(this);
+  }
+
+  togglePopup() {
+    this.setState({card: 1});
+    console.log(this.state.card)
   }
 
   handleSendData(data) {
@@ -18,7 +25,19 @@ class App extends Component {
   render() {
     return (
       <div className="app">
-        <p>Tandem Life</p>
+        <div className={this.state.card ? 'overlayCard' : 'd-none'}>
+            <p>Tandem Life</p>
+        </div>
+        <div className={this.state.card ? 'black' : ''}></div>
+        <Post
+          name="Alex"
+          time="1"
+          image="llama.png"
+          message="Have you ever been to Peru? I just got to Nazca and am absolutely in love with Peruvian culture. I got spat on by a llama but that's okay. ¡Viva Perú!"
+          likes="155"
+          comments="55"
+          onClick = {this.togglePopup}
+        />
         <Post
           name="Alex"
           time="1"
@@ -27,6 +46,19 @@ class App extends Component {
           likes="155"
           comments="55"
         />
+        <Post
+          name="Alex"
+          time="1"
+          image="llama.png"
+          message="Have you ever been to Peru? I just got to Nazca and am absolutely in love with Peruvian culture. I got spat on by a llama but that's okay. ¡Viva Perú!"
+          likes="155"
+          comments="55"
+        />
+        <div className="seeMoreContainer d-flex">
+          <div className="seeMoreButton m-auto">
+            <p className="m-0"onClick={this.togglePopup}>SEE MORE</p>
+          </div>
+        </div>
       </div>
     )
   }

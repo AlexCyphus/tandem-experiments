@@ -1,15 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
 
 .app {
   overflow-x: hidden;
-  padding: 35px 40px;
   font-size: 16px;
   font-family: Roboto;
+  background-color: #E5E5E5;
+  font-weight: 300;
 }
 
 .icon-image {
   width: 50px;
   height: 50px;
+  padding: 0 8px 0px 0 !important;
 }
 
 .reaction {
@@ -17,7 +20,8 @@
 }
 
 .outer-post {
-  border-bottom: 0.5px lightgrey dashed;
+  border-bottom: 0.5px black solid;
+  padding: 15px 40px !important;
 }
 
 .posted-image {
@@ -30,11 +34,61 @@
   color: grey;
 }
 
-.brd {
-  padding-bottom: 15px;
-  width: 100%;
-}
-
 .reactions {
   padding: 5px 0;
+}
+
+.message {
+  padding: 10px 0px;
+}
+
+.name {
+  font-weight: bold;
+}
+
+.posted-image {
+  padding: 0 0 10px 0 !important;
+}
+
+.reaction {
+  vertical-align: middle;
+}
+
+.count {
+  top: 1.5px;
+}
+
+.seeMoreButton {
+  background-color: #ED5481;
+  color: white;
+  font-weight: 500;
+  text-align: center;
+  width: 200px;
+  border-radius: 50px;
+  font-size: 18px;
+  padding: 5px;
+}
+
+.seeMoreContainer {
+  margin: 40px;
+}
+
+.black {
+  background-color: black;
+  z-index: 2;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  opacity: 50%;
+}
+
+.overlayCard {
+  z-index: 3;
+  height: 100px;
+  position: fixed;
+  width: 100%;
+  height: 60vh;
+  top: 40vh;
+  background-color: #F1F1F1;
+  border-radius: 40px 40px 0 0;
 }
