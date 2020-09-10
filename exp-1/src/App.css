@@ -20,7 +20,7 @@
 }
 
 .outer-post {
-  border-bottom: 0.5px black solid;
+  border-bottom: 0.5px lightgrey solid;
   padding: 15px 20px !important;
 }
 
@@ -28,7 +28,7 @@
   max-height: 200px;
   max-width: 200px;
   margin-bottom: 10px;
-  border-radius: 25px;
+  border-radius: 30px;
 }
 
 .time {
@@ -44,7 +44,6 @@
 }
 
 .name {
-  font-weight: bold;
   padding: 0 0 0 10px !important;
   margin: 0 !important;
 }
@@ -59,6 +58,8 @@
 
 .count {
   top: 1.5px;
+  height: 25px;
+  margin: auto;
 }
 
 .seeMoreButton {
@@ -66,11 +67,20 @@
   color: white;
   font-weight: 500;
   text-align: center;
-  width: 100%;
+  width: 300px;
   border-radius: 50px;
   font-size: 18px;
   padding: 5px;
-  max-width: 300px;
+  margin:auto;
+}
+
+.fixed-button-pos {
+  position: absolute !important;
+  bottom: 36vh !important;
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  margin-left: -150px;
 }
 
 .black {
@@ -88,7 +98,7 @@
   position: fixed;
   width: 100%;
   height: 60vh;
-  top: 34vh;
+  top: 30vh;
   background-color: #F1F1F1;
   border-radius: 40px 40px 0 0;
 }
@@ -96,7 +106,7 @@
 .close-button {
   position: fixed;
   left: 85vw;
-  top: 37vh;
+  top: 33vh;
   z-index: 5;
 }
 
@@ -132,18 +142,28 @@
 
 }
 
-.fixed-button-pos {
-  position: absolute !important;
-  bottom: 40vh !important;
-}
-
 .main-form {
   width: 100%;
 }
 
-input {
+textarea {
   width: 100%;
   height: 23vh;
   text-align: left;
   vertical-align: bottom;
+  padding: 15px;
+  font-weight: 300;
+}
+
+.title {
+  padding-bottom: 15px !important;
+}
+
+#page-3 {
+  height: 100px;
+}
+
+#audio {
+  width: 250px !important;
+  border-radius: 0;
 }

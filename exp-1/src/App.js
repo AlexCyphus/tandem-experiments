@@ -55,27 +55,30 @@ class App extends Component {
         <Post
           name="Alex"
           time="1"
-          image="llama.png"
+          postImage="llama.png"
           message="Have you ever been to Peru? I just got to Nazca and am absolutely in love with Peruvian culture. I got spat on by a llama but that's okay. ¡Viva Perú!"
           likes="155"
           comments="55"
           onClick = {this.togglePopup}
+          userImage = "alex.png"
         />
         <Post
-          name="Alex"
-          time="1"
-          image="llama.png"
-          message="Have you ever been to Peru? I just got to Nazca and am absolutely in love with Peruvian culture. I got spat on by a llama but that's okay. ¡Viva Perú!"
-          likes="155"
-          comments="55"
+          name="Tamara"
+          time="15"
+          message="Has anyone read the Harry Potter series? I have never read it before 😬. Would you recommend it? What is so great about it? Is the British English hard to understand?"
+          likes="20"
+          comments="3"
+          userImage = "tamara.png"
         />
         <Post
-          name="Alex"
-          time="1"
-          image="llama.png"
-          message="Have you ever been to Peru? I just got to Nazca and am absolutely in love with Peruvian culture. I got spat on by a llama but that's okay. ¡Viva Perú!"
-          likes="155"
-          comments="55"
+          name="Chelsea"
+          time="36"
+          postImage="audio.png"
+          message="How's my prounciation?"
+          likes="43"
+          comments="32"
+          userImage = "chelsea.png"
+          specId = "audio"
         />
         <ActionButton action={this.togglePopup} text="SEE MORE" specId="see-more"/>
       </div>

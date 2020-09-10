@@ -13,7 +13,7 @@ function Popup({card, togglePopup, closePopup, value, handleChange, handleSubmit
       <div className={card ? 'overlayCard' : 'd-none'}>
         <div className={card === 1 ? 'container page-1 page' : "d-none"}>
           <div className="page-1-header row">
-            <p className="col-auto m-auto text-center big-text">Tandem Life</p>
+            <p className="col-auto m-auto text-center big-text title">Tandem Life</p>
           </div>
           <div className="lightbulb row justify-content-center">
             <EmojiObjectsIcon style={{ fontSize: 80 }}/>
@@ -32,11 +32,11 @@ function Popup({card, togglePopup, closePopup, value, handleChange, handleSubmit
             <p className="col-12">This feature is not currently available. We would love to know what in particular interests you about the feature...</p>
           </div>
           <form onSubmit={handleSubmit} className="main-form">
-            <input type="text" value={value} onChange={handleChange}/>
+            <textarea value={value} onChange={handleChange}/>
             <ActionButton text="SUBMIT" specId={'submit'} action={togglePopup} fixed={true}/>
           </form>
         </div>
-        <div className={card === 3 ? 'overlayCard page' : "d-none"}>
+        <div className={card === 3 ? 'overlayCard page' : "d-none"} id="page-3">
           <div className="page-1-header row">
             <p className="col-auto m-auto text-center big-text">Thanks</p>
           </div>
