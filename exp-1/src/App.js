@@ -58,15 +58,6 @@ class App extends Component {
       database: "heroku_aaae19a4220d4fe"
     });
 
-    function postWhatever() {
-      var sql = "INSERT INTO responses (content_clicked) VALUES (1)"; 
-      con.query(sql, function (err, res) {   
-        if (err) throw err;
-        console.log("1 record inserted");
-        res.end('Success');
-      });
-    }
-
     // this doesn't work because it's a node command
 
     return (

@@ -15,33 +15,41 @@ app.use(express.static(path.join(__dirname, "build")));
 
 app.get('/', function(req,res){
   res.sendFile(path.join(__dirname,'build','index.html'));
+  // create row var sql = "INSERT INTO responses (see_more_clicked) VALUES (1)"; 
 });
 
 app.listen(process.env.PORT || 3000);
 console.log("Listening on port 3000")
 
-con.connect(function(err) {
-  if (err) throw err;
-  console.log("Connected!");
-});
 
 // see more clicked
 app.get('/api/see_more_clicked', (req,res) => {
+  con.connect(function(err) {
+    if (err) {console.log(err)} ;
+    console.log("Connected!");
+  });
   var sql = "INSERT INTO responses (see_more_clicked) VALUES (1)"; 
   con.query (sql, (err, result) => {
-    if (err) throw err;
+    if (err) {console.log(err)};
     console.log("1 record inserted");
+    res.end('Success');
   });
-});
+})
 
 // upgrade clicked
 app.get('/api/upgrade_clicked', (req,res) => {
+  con.connect(function(err) {
+    if (err) {console.log(err)} ;
+    console.log("Connected!");
+  });
+
   var sql = "INSERT INTO responses (upgrade_clicked) VALUES (1)"; 
   con.query (sql, (err, result) => {
-    if (err) throw err;
+    if (err) {console.log(err)};
     console.log("1 record inserted");
+    res.end('Success');
   });
-});
+})
 
 //
 

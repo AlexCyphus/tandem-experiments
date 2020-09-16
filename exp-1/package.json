@@ -1,9 +1,8 @@
 {
-  "homepage": "https://tranquil-everglades-66333.herokuapp.com/",
+  "homepage": "https://tranquil-everglades-66333.herokuapp.com",
   "name": "test-experiment",
   "version": "0.1.0",
   "private": true,
-  "homepage": "./",
   "dependencies": {
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
