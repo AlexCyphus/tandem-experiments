@@ -5,7 +5,7 @@
   overflow-x: hidden;
   font-size: 16px;
   font-family: Roboto;
-  background-color: #F1F1F1;
+  background-color: #F6F3F0;
   font-weight: 300;
 }
 
@@ -56,19 +56,12 @@
   vertical-align: middle;
 }
 
-.count {
-  top: 1.5px;
-  height: 25px;
-  margin: auto;
-}
-
-
 .seeMoreButton {
   background-color: #ED5481;
   color: white;
   font-weight: 500;
   text-align: center;
-  width: 300px;
+  width: 250px;
   border-radius: 50px;
   font-size: 18px;
   padding: 5px;
@@ -100,6 +93,14 @@
   border-radius: 40px 40px 0 0;
 }
 
+.page-header {height: 52px;}
+.lightbulb {height: 80px;}
+.text-container {height: 217px;}
+.text-container-2 {height: 120px;}
+.text-container-3 {height: 297px;}
+.seeMoreContainer {height: 77px;}
+textarea {height: 177px;}
+
 .close-button {
   position: fixed;
   left: 85vw;
@@ -113,30 +114,14 @@
 }
 
 .page {
-  padding: 25px 40px !important;
+  padding: 25px 30px !important;
 }
+
+.bold {font-weight: normal;}
 
 .bold-pink {
-  font-weight: bold;
+  font-weight: normal;
   color: #ED5481;
-}
-
-.bold {
-  font-weight: bold;
-}
-
-#see-more {
-  margin: 40px;
-}
-
-#upgrade {
-  margin: 5vh 0vh;
-
-}
-
-#submit {
-  margin: 29vh 0 0 0;
-
 }
 
 .main-form {
@@ -145,23 +130,20 @@
 
 textarea {
   width: 100%;
-  height: 23vh;
   text-align: left;
   vertical-align: bottom;
   padding: 15px;
   font-weight: 300;
 }
 
-.title {
-  padding-bottom: 15px !important;
-}
-
-#page-3 {
-  height: 100px;
-}
+.title {padding-bottom: 15px !important;}
 
 #audio {
   width: 100%;
   max-width: 290px;
   border-radius: 0;
 }
+
+
+
+.count {color: grey;}

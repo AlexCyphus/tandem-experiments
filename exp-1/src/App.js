@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Post from "./components/Post"
 import Popup from "./components/Popup"
 import ActionButton from "./components/ActionButton"
+const mysql = require('mysql');
 
 class App extends Component {
   constructor() {
@@ -17,6 +18,7 @@ class App extends Component {
   // more diversity of content
   // text area answering box should be clearing responses and the keyboard shouldn't cover it. https://stackoverflow.com/questions/51606099/how-to-detect-when-keyboard-is-opened-or-closed-in-react-native
   // send clicks to the backend
+  //  CLEARDB_DATABASE_URL: mysql://ba7f4376abe00d:2aaec46f@us-cdbr-east-02.cleardb.com/heroku_aaae19a4220d4fe?reconnect=true
 
   togglePopup() {
     var newCard = this.state.card + 1
@@ -45,6 +47,24 @@ class App extends Component {
   //<button onClick={() => this.handleSendUsername('test')}>Hello World</button>
 
   render() {
+    var con = mysql.createConnection({
+      host: "us-cdbr-east-02.cleardb.com",
+      user: "ba7f4376abe00d",
+      password: "2aaec46f",
+      database: "heroku_aaae19a4220d4fe"
+    });
+
+    function postWhatever() {
+      var sql = "INSERT INTO responses (content_clicked) VALUES (1)"; 
+      con.query(sql, function (err, res) {   
+        if (err) throw err;
+        console.log("1 record inserted");
+        res.end('Success');
+      });
+    }
+
+    // this doesn't work because it's a node command
+
     return (
       <div className="app">
         <Popup card={this.state.card} togglePopup={this.togglePopup} closePopup = {this.closePopup} value={this.value} handleChange={this.handleChange} handleSubmit={this.handleSubmit}/>
@@ -59,7 +79,7 @@ class App extends Component {
           message="Have you ever been to Peru? I just got to Nazca and am absolutely in love with Peruvian culture. I got spat on by a llama but that's okay. ¡Viva Perú!"
           likes="155"
           comments="55"
-          onClick = {this.togglePopup}
+          togglePopup = {this.togglePopup}
           userImage = "alex.png"
         />
         <Post
@@ -69,6 +89,7 @@ class App extends Component {
           likes="20"
           comments="3"
           userImage = "tamara.png"
+          togglePopup = {this.togglePopup}
         />
         <Post
           name="Chelsea"
@@ -79,6 +100,7 @@ class App extends Component {
           comments="32"
           userImage = "chelsea.png"
           specId = "audio"
+          togglePopup = {this.togglePopup}
         />
         <ActionButton action={this.togglePopup} text="SEE MORE" specId="see-more"/>
       </div>

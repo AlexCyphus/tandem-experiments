@@ -2,7 +2,9 @@
   "homepage": "https://tranquil-everglades-66333.herokuapp.com/",
   "name": "test-experiment",
   "version": "0.1.0",
+  "proxy": "http://localhost:8080",
   "private": true,
+  "homepage": "./",
   "dependencies": {
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
@@ -11,17 +13,18 @@
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.20.0",
     "bootstrap": "^4.5.2",
+    "mysql": "^2.18.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.3"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "node server.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "git push heroku master"
   },
   "eslintConfig": {
     "extends": "react-app"
