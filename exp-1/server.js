@@ -35,8 +35,8 @@ app.get('/api/see_more_clicked', (req,res) => {
 });
 
 // upgrade clicked
-app.get('/api/see_more_clicked', (req,res) => {
-  var sql = "INSERT INTO responses (see_more_clicked) VALUES (1)"; 
+app.get('/api/upgrade_clicked', (req,res) => {
+  var sql = "INSERT INTO responses (upgrade_clicked) VALUES (1)"; 
   con.query (sql, (err, result) => {
     if (err) throw err;
     console.log("1 record inserted");
@@ -47,9 +47,3 @@ app.get('/api/see_more_clicked', (req,res) => {
 
 
 //  mysql://ba7f4376abe00d:2aaec46f@us-cdbr-east-02.cleardb.com/heroku_aaae19a4220d4fe?reconnect=true
-
-// var xhr = new XMLHttpRequest()
-// xhr.addEventListener('load', () => {console.log(xhr.responseText)})
-// if (this.state.card == 0) {xhr.open('GET','./api/see_more_clicked');}
-// if (this.state.card == 1) {xhr.open('GET','./api/upgrade_clicked');}
-// xhr.send();

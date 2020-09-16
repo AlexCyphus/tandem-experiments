@@ -23,6 +23,10 @@ class App extends Component {
   togglePopup() {
     var newCard = this.state.card + 1
     this.setState({card: newCard});
+    var xhr = new XMLHttpRequest()
+    if (this.state.card == 0) {xhr.open('GET','/api/see_more_clicked');}
+    if (this.state.card == 1) {xhr.open('GET','/api/upgrade_clicked');}
+    xhr.send();
   }
 
   handleChange(e){
