@@ -36,37 +36,27 @@ app.get('/api/initiate', function(req,res){
   var sql = "INSERT INTO responses (initiated) VALUES (1)"; 
   con.query (sql, (err, result) => {
     if (err) {console.log(err)};
-    res.json({"id": result.insertId});
+    userId = result.insertId;
     console.log("row initialized")
   });
 });
 
-// see more clicked
+// see more clicked (working)
 app.put('/api/see_more_clicked', jsonParser, (req, res) => {
-  console.log("see more", req.body)
-  userId = req.body.id
-  var sql = "INSERT INTO responses (see_more_clicked) VALUES (1)"; 
+  console.log("see more", userId)
+  var sql = "UPDATE responses SET see_more_clicked = 1 WHERE id = " + userId
   con.query (sql, (err, result) => {
     if (err) {console.log(err)};
-    res.json({
-      "SQL Query": sql,
-      "Status": "Success"
-    });
     console.log("see_more_clicked inserted")
   })
 });
 
-// upgrade clicked
-//var sql = "UPDATE responses SET upgrade_clicked = 1 WHERE id = '" + req.params.id
+// upgrade clicked (working)
 app.put('/api/upgrade_clicked', (req,res) => {
   console.log("upgrade", userId)
-  var sql = "INSERT INTO responses (upgrade_clicked) VALUES (1)"; 
+  var sql = "UPDATE responses SET upgrade_clicked = 1 WHERE id = " + userId
   con.query (sql, (err, result) => {
     if (err) {console.log(err)};
-    res.json({
-      "SQL Query": sql,
-      "Status": "Success"
-    });
     console.log("upgrade_clicked inserted")
   })
 });

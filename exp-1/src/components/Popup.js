@@ -30,13 +30,10 @@ function Popup({card, togglePopup, closePopup, value, handleChange, handleSubmit
           <div className="page-header row">
             <p className="col-auto m-auto text-center big-text">Sorry...</p>
           </div>
-          <div className="text-center row text-container-2">
-            <p className="col-12 m-auto">This feature is not currently available. We would love to know what in particular interests you about the feature...</p>
+          <div className="text-center text-container-3 row pt-3">
+            <p className="col-12">This feature isn't quite ready yet. But we would love to know what specifically interests you about the feature!</p>
           </div>
-          <form onSubmit={handleSubmit} className="main-form">
-            <textarea value={value} onChange={handleChange}/>
-            <ActionButton text="SUBMIT" specId={'submit'} action={togglePopup} fixed={true}/>
-          </form>
+          <ActionButton text="GIVE FEEDBACK" specId={'close'} action={null} link="https://tandemteacher.typeform.com/to/vo9IWGhI" fixed={true}/>
         </div>
         <div className={card === 3 ? 'overlayCard page' : "d-none"} id="page-3">
           <div className="page-header row">
