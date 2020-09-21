@@ -7,7 +7,10 @@ const mysql = require('mysql');
 class App extends Component {
   constructor() {
     super()
-    this.state = {card: 0,}
+    this.state = {
+      card: 0,
+      id: 0
+    }
     this.togglePopup = this.togglePopup.bind(this);
     this.closePopup = this.closePopup.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -20,14 +23,35 @@ class App extends Component {
   // send clicks to the backend
   //  CLEARDB_DATABASE_URL: mysql://ba7f4376abe00d:2aaec46f@us-cdbr-east-02.cleardb.com/heroku_aaae19a4220d4fe?reconnect=true
 
+  componentDidMount() {
+    var xhr = new XMLHttpRequest()
+    xhr.open('GET','/api/initiate');
+    xhr.send();
+    xhr.onreadystatechange = () => {
+      if (xhr.readyState === 4) {
+        this.setState({id: JSON.parse(xhr.response).id});
+      }
+    }
+  }
+
+  sendJson(json) {
+    var xhr = new XMLHttpRequest()
+    var url = ''
+    if (this.state.card == 0) {var url = '/api/see_more_clicked'}
+    if (this.state.card == 1) {var url = "/api/upgrade_clicked"}
+    if (this.state.card == 2) {var url = "/api/submit_clicked"}
+    xhr.open('PUT', url)
+    xhr.setRequestHeader('Content-type','application/json');
+    var json = JSON.stringify(json)
+    xhr.send(json)
+  }
+
   togglePopup() {
     var newCard = this.state.card + 1
     this.setState({card: newCard});
-    var xhr = new XMLHttpRequest()
-    if (this.state.card == 0) {xhr.open('GET','/api/see_more_clicked');}
-    if (this.state.card == 1) {xhr.open('GET','/api/upgrade_clicked');}
-    xhr.send();
+    this.sendJson({id: this.state.id})
   }
+
 
   handleChange(e){
     this.setState({value: e});
@@ -51,20 +75,10 @@ class App extends Component {
   //<button onClick={() => this.handleSendUsername('test')}>Hello World</button>
 
   render() {
-    var con = mysql.createConnection({
-      host: "us-cdbr-east-02.cleardb.com",
-      user: "ba7f4376abe00d",
-      password: "2aaec46f",
-      database: "heroku_aaae19a4220d4fe"
-    });
-
-    // this doesn't work because it's a node command
-
     return (
       <div className="app">
         <Popup card={this.state.card} togglePopup={this.togglePopup} closePopup = {this.closePopup} value={this.value} handleChange={this.handleChange} handleSubmit={this.handleSubmit}/>
         <div>
-
         </div>
         <div className={this.state.card ? 'black' : ''}></div>
         <Post
