@@ -4,7 +4,7 @@ import EmojiObjectsIcon from '@material-ui/icons/EmojiObjects';
 import ActionButton from "./ActionButton"
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 
-function Popup({card, togglePopup, closePopup, value, handleChange, handleSubmit}) {
+function Popup({card, togglePopup, closePopup, value, handleChange, handleSubmit, clickFeedback}) {
   if (!card){var display = "none"}
 
   return ([
@@ -33,7 +33,7 @@ function Popup({card, togglePopup, closePopup, value, handleChange, handleSubmit
           <div className="text-center text-container-3 row pt-3">
             <p className="col-12">This feature isn't quite ready yet. But we would love to know what specifically interests you about the feature!</p>
           </div>
-          <ActionButton text="GIVE FEEDBACK" specId={'close'} action={null} link="https://tandemteacher.typeform.com/to/vo9IWGhI" fixed={true}/>
+          <ActionButton text="GIVE FEEDBACK" specId={'close'} action={clickFeedback} fixed={true}/>
         </div>
         <div className={card === 3 ? 'overlayCard page' : "d-none"} id="page-3">
           <div className="page-header row">

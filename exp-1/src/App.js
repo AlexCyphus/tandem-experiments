@@ -4,6 +4,7 @@ import Popup from "./components/Popup"
 import ActionButton from "./components/ActionButton"
 const mysql = require('mysql');
 
+
 class App extends Component {
   constructor() {
     super()
@@ -15,6 +16,8 @@ class App extends Component {
     this.closePopup = this.closePopup.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.clickContent = this.clickContent.bind(this);
+    this.clickFeedback = this.clickFeedback.bind(this);
   }
 
   // don't load anything for a second
@@ -34,22 +37,32 @@ class App extends Component {
     }
   }
 
-  sendJson(json) {
+  sendJson(json, type="nada") {
+    // im not using the sent json anymore im just too scared to delete it
     var xhr = new XMLHttpRequest()
     var url = ''
-    if (this.state.card == 0) {var url = '/api/see_more_clicked'}
-    if (this.state.card == 1) {var url = "/api/upgrade_clicked"}
-    if (this.state.card == 2) {var url = "/api/submit_clicked"}
+    if (type == "close") {var url = '/api/close_clicked'}
+    else if (type == "content") {var url = '/api/content_clicked'}
+
+
+    else {
+      if (this.state.card == 0) {var url = '/api/see_more_clicked'}
+      if (this.state.card == 1) {var url = "/api/upgrade_clicked"}
+      if (this.state.card == 2) {var url = "/api/give_feedback_clicked"}
+    }
+
     xhr.open('PUT', url)
     xhr.setRequestHeader('Content-type','application/json');
     var json = JSON.stringify(json)
     xhr.send(json)
   }
 
-  togglePopup() {
+  togglePopup(button=true) {
     var newCard = this.state.card + 1
     this.setState({card: newCard});
-    this.sendJson({id: this.state.id})
+    if (button) {
+      this.sendJson({id: this.state.id})
+    }
   }
 
 
@@ -63,6 +76,17 @@ class App extends Component {
 
   closePopup(){
     this.setState({card: 0})
+    this.sendJson({literally: "whatever"}, "close")
+  }
+
+  clickContent(){
+    this.togglePopup(false)
+    this.sendJson({literally: "whatever"}, "content")
+  }
+
+  clickFeedback(e){
+    this.sendJson()
+    window.location = 'https://tandemteacher.typeform.com/to/vo9IWGhI'
   }
 
   handleSendData(data) {
@@ -77,7 +101,7 @@ class App extends Component {
   render() {
     return (
       <div className="app">
-        <Popup card={this.state.card} togglePopup={this.togglePopup} closePopup = {this.closePopup} value={this.value} handleChange={this.handleChange} handleSubmit={this.handleSubmit}/>
+        <Popup card={this.state.card} togglePopup={this.togglePopup} closePopup = {this.closePopup} value={this.value} handleChange={this.handleChange} handleSubmit={this.handleSubmit} clickFeedback={this.clickFeedback}/>
         <div>
         </div>
         <div className={this.state.card ? 'black' : ''}></div>
@@ -88,7 +112,7 @@ class App extends Component {
           message="Have you ever been to Peru? I just got to Nazca and am absolutely in love with Peruvian culture. I got spat on by a llama but that's okay. ¡Viva Perú!"
           likes="155"
           comments="55"
-          togglePopup = {this.togglePopup}
+          togglePopup = {this.clickContent}
           userImage = "alex.png"
         />
         <Post
@@ -98,7 +122,7 @@ class App extends Component {
           likes="20"
           comments="3"
           userImage = "tamara.png"
-          togglePopup = {this.togglePopup}
+          togglePopup = {this.clickContent}
         />
         <Post
           name="Chelsea"
@@ -109,7 +133,7 @@ class App extends Component {
           comments="32"
           userImage = "chelsea.png"
           specId = "audio"
-          togglePopup = {this.togglePopup}
+          togglePopup = {this.clickContent}
         />
         <ActionButton action={this.togglePopup} text="SEE MORE" specId="see-more"/>
       </div>

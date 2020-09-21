@@ -28,11 +28,12 @@
   max-height: 200px;
   max-width: 200px;
   margin-bottom: 10px;
-  border-radius: 30px;
+  border-radius: 20px;
 }
 
 .time {
-  color: grey;
+  color: #8c8c8c;
+  font-size: 12px;
 }
 
 .reactions {
@@ -90,7 +91,7 @@
   height: 450px;
   top: calc(100% - 450px);
   background-color: #F1F1F1;
-  border-radius: 40px 40px 0 0;
+  border-radius: 20px 20px 0 0;
 }
 
 .page-header {height: 52px;}
@@ -144,4 +145,26 @@ textarea {
   border-radius: 0;
 }
 
-.count {color: grey;}
+.count {
+  color: #8c8c8c;
+  font-size: 12px;
+}
+
+.post-poster {
+  padding: 0 0 5px 0;
+}
+
+.name {
+ padding: 0 0 0 5px;
+ letter-spacing: 0.5px;
+ font-weight: normal !important;
+}
+
+#close {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.no-underline, .no-underline:hover, .no-underline:active, .no-underline:visited, .no-underline:focus {
+    text-decoration: none !important;
+}

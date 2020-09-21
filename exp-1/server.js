@@ -28,7 +28,6 @@ setInterval(function () {
 
 // load homepage, create blank row, save as userID
 app.get('/', function(req,res){
-  console.log("homepage homey")
   res.sendFile(path.join(__dirname,'build','index.html'));
 });
 
@@ -43,7 +42,6 @@ app.get('/api/initiate', function(req,res){
 
 // see more clicked (working)
 app.put('/api/see_more_clicked', jsonParser, (req, res) => {
-  console.log("see more", userId)
   var sql = "UPDATE responses SET see_more_clicked = 1 WHERE id = " + userId
   con.query (sql, (err, result) => {
     if (err) {console.log(err)};
@@ -53,7 +51,6 @@ app.put('/api/see_more_clicked', jsonParser, (req, res) => {
 
 // upgrade clicked (working)
 app.put('/api/upgrade_clicked', (req,res) => {
-  console.log("upgrade", userId)
   var sql = "UPDATE responses SET upgrade_clicked = 1 WHERE id = " + userId
   con.query (sql, (err, result) => {
     if (err) {console.log(err)};
@@ -62,12 +59,31 @@ app.put('/api/upgrade_clicked', (req,res) => {
 });
 
 // content_clicked
-
-// upgrade_clicked
+app.put('/api/content_clicked', (req,res) => {
+  var sql = "UPDATE responses SET content_clicked = 1 WHERE id = " + userId
+  con.query (sql, (err, result) => {
+    if (err) {console.log(err)};
+    console.log("content_clicked inserted")
+  })
+});
 
 // close_clicked
+app.put('/api/close_clicked', (req,res) => {
+  var sql = "UPDATE responses SET close_clicked = 1 WHERE id = " + userId
+  con.query (sql, (err, result) => {
+    if (err) {console.log(err)};
+    console.log("close_clicked inserted")
+  })
+});
 
 // give_feedback_clicked
+app.put('/api/give_feedback_clicked', (req,res) => {
+  var sql = "UPDATE responses SET give_feedback_clicked = 1 WHERE id = " + userId
+  con.query (sql, (err, result) => {
+    if (err) {console.log(err)};
+    console.log("give_feedback inserted")
+  })
+});
 
 
 //  mysql://ba7f4376abe00d:2aaec46f@us-cdbr-east-02.cleardb.com/heroku_aaae19a4220d4fe?reconnect=true
