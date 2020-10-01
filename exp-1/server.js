@@ -38,6 +38,7 @@ app.get('/api/initiate', function(req,res){
     userId = result.insertId;
     console.log("row initialized")
   });
+  return res.json({ success: 'Yes' });
 });
 
 // see more clicked (working)
@@ -47,6 +48,7 @@ app.put('/api/see_more_clicked', jsonParser, (req, res) => {
     if (err) {console.log(err)};
     console.log("see_more_clicked inserted")
   })
+  return res.json({ success: 'Yes' });
 });
 
 // upgrade clicked (working)
@@ -56,6 +58,7 @@ app.put('/api/upgrade_clicked', (req,res) => {
     if (err) {console.log(err)};
     console.log("upgrade_clicked inserted")
   })
+  return res.json({ success: 'Yes' });
 });
 
 // content_clicked
@@ -65,6 +68,7 @@ app.put('/api/content_clicked', (req,res) => {
     if (err) {console.log(err)};
     console.log("content_clicked inserted")
   })
+  return res.json({ success: 'Yes' });
 });
 
 // close_clicked
@@ -74,6 +78,7 @@ app.put('/api/close_clicked', (req,res) => {
     if (err) {console.log(err)};
     console.log("close_clicked inserted")
   })
+  return res.json({ success: 'Yes' });
 });
 
 // give_feedback_clicked
@@ -83,6 +88,7 @@ app.put('/api/give_feedback_clicked', (req,res) => {
     if (err) {console.log(err)};
     console.log("give_feedback inserted")
   })
+  return res.json({ success: 'Yes' });
 });
 
 

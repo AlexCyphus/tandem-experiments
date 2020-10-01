@@ -20,7 +20,7 @@ function Popup({card, togglePopup, closePopup, value, handleChange, handleSubmit
           </div>
           <div className="text-center text-container row p-0">
             <div className="m-auto">
-              <p className="col-12">Upgrade to <span className="bold-pink">Tandem Pro</span> to gain access to <span className="bold">Tandem Life</span> and see and learn from statuses, audios, and images from all over the world.</p>
+              <p className="col-12">Upgrade to <span className="bold-pink">Tandem Pro</span> to gain access to <span className="bold">Tandem Life</span> to see statuses, audio recordings, and images from all over the world.</p>
               <p className="col-12 m-0">Post your own questions or content and meet new Tandem partners.</p>
             </div>
           </div>
@@ -31,7 +31,7 @@ function Popup({card, togglePopup, closePopup, value, handleChange, handleSubmit
             <p className="col-auto m-auto text-center big-text">Sorry...</p>
           </div>
           <div className="text-center text-container-3 row pt-3">
-            <p className="col-12">This feature isn't quite ready yet. But we would love to know what specifically interests you about the feature!</p>
+            <p className="col-12">Tandem Life is still under construction and not quite ready yet. We would love to know what interests you specifically about Tandem Life!</p>
           </div>
           <ActionButton text="GIVE FEEDBACK" specId={'close'} action={clickFeedback} fixed={true}/>
         </div>

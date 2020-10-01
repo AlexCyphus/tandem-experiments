@@ -46,7 +46,6 @@
 
 .name {
   padding: 0 0 0 10px !important;
-  margin: 0 !important;
 }
 
 .posted-image {
@@ -156,7 +155,7 @@ textarea {
 
 .name {
  padding: 0 0 0 5px;
- letter-spacing: 0.5px;
+ letter-spacing: 0px;
  font-weight: normal !important;
 }
 

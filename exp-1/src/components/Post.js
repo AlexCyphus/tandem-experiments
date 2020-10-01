@@ -18,7 +18,7 @@ function Post({name, time, message, postImage=false, audio=false, likes, comment
           <div className="row w-100 post-poster m-0">
             <img src={'/'+ userImage} className="col-auto icon-image"/>
             <p className="col-auto m-auto name">{name.toUpperCase()}</p>
-            <p className="col text-right time">{time}m</p>
+            <p className="col text-right time m-auto">{time}m</p>
           </div>
           <p className="w-100 m-0 message">{message}</p>
           <img src={"/"+postImage} className= {"col-auto posted-image m-0 " + img} id={specId}/>
