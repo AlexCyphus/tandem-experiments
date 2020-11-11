@@ -32,10 +32,10 @@ const categoryData = {
 }
 
 const chatData = {
-  seriousLearning: [],
-  relaxedLearning: [],
-  justChatting: [],
-  hobbiesAndInterests: ["Grammar tips", "Useful vocab + phrases", "Pronounciation help", "Learning resources"]
+  seriousLearning: ["Grammar tips", "Useful vocab + phrases", "Pronounciation help", "Learning resources"],
+  relaxedLearning: ["What are your favorite ways to learn?", "Learning tips", "Big group Tandem", "Book recommendations"],
+  justChatting: ["How's your day?", "Introduce yourself!", "What is the meaning of life?", "Gossip"],
+  hobbiesAndInterests: ["Sports", "TV Shows", "Music", "Exploring nature"]
 }
 
 class App extends Component {
@@ -92,7 +92,7 @@ class App extends Component {
       Screen = () => {return (
         <div>
           <p>Looks like you don't have any group chats yet...</p>
-          <ActionButton text="Start a private group chat"/>
+          <ActionButton text="Start a private group chat" color="blue" fixed={true}/>
         </div>
       )}
     }
@@ -119,10 +119,10 @@ class App extends Component {
           return <Category data={item} key={i} itemType="chat"/>
         })
         }
-        <div className="fixed-button-pos text-center">
-          <p>Want to chat about something else?</p>
-          <ActionButton text="Start new public group chat" color="blue"/>
-        </div>
+      </div>
+      <div className="fixed-button-pos text-center">
+        <p>Want to chat about something else?</p>
+        <ActionButton text="Start new public group chat" color="blue"/>
       </div>
       </>
       )}
@@ -130,7 +130,7 @@ class App extends Component {
 
     return (
       <div className="app h-100">
-        <div className="popup"></div>
+        <div className={"popup w-100 h-100 " + (this.state.popup ? "d-flex": "d-none")}></div>
         {this.state.screen == "public" || this.state.screen == "private" 
         ? <div className="sliding-header d-flex">
           <div className={"tab-slider col-6 text-center bold " + (this.state.screen == "public" ? 'blue' : null)} onClick={() => this.handleScreenChange("public")}><p>Public</p></div>
