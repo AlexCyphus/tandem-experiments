@@ -38,17 +38,38 @@ const chatData = {
   hobbiesAndInterests: ["Sports", "TV Shows", "Music", "Exploring nature"]
 }
 
+// should randomize these here to prevent duplicates
+const emojis = Array.from({length: 13}, (_, i) => i + 1)
+const flags = Array.from({length: 11}, (_, i) => i + 14)
+const groupSizes = [6, 11, 22, 105]
+
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array
+}
+
+// random for each
+var randomData = {
+  screensEmojis: shuffleArray(emojis).slice(0,4),
+  screensGroupSizes: shuffleArray(groupSizes)
+}
+
 class App extends Component {
   constructor() {
     super()
     this.state = {
-      screen: "category_hobbiesAndInterests",
-      popup: true,
-      publicGroup: true
+      screen: "category_relaxedLearning",
+      popup: false,
+      publicGroup: true,
+      showsOver: false
     }
     this.handleScreenChange = this.handleScreenChange.bind(this)
     this.handleBackToPublic = this.handleBackToPublic.bind(this)
     this.togglePopup = this.togglePopup.bind(this)
+    this.toggleShowsOver = this.toggleShowsOver.bind(this)
   }
 
   componentDidMount() {}
@@ -61,7 +82,7 @@ class App extends Component {
   handleOpenGroup(group){
     let screen = "category_" + group
     if (group == "tandemPair"){
-      return this.handleEndIllusion()
+      return this.toggleShowsOver()
     }
     this.setState({screen})
   }
@@ -70,24 +91,22 @@ class App extends Component {
     this.setState({screen: "public"})
   }
 
-  togglePopup(public){
-    
+  togglePopup(publicGroup){
     var isPublic = ""
-    var popup = ""
-    
-    if (public){isPublic = true}
 
+    if (publicGroup){isPublic = true}
     else {isPublic = false}
-
-
-    if (this.state.popup){
-      this.setState({popup: false})
-    }
-
-    else {
-      this.setState({popup: true})
-    }
     
+    this.setState({
+      publicGroup: isPublic,
+      popup: !this.state.popup,
+      showsOver: false
+    })
+  }
+
+  toggleShowsOver(dontPopup=true){
+    if(dontPopup){this.togglePopup()}
+    this.setState({showsOver: true})
   }
   
   render() {
@@ -103,7 +122,7 @@ class App extends Component {
             })
             }
           </div>
-          <ActionButton text="See more" color="blue"/>
+          <div className="see-more-holder"><ActionButton text="See more" color="blue" action={this.toggleShowsOver}/></div>
         </>
       )}
     }
@@ -111,9 +130,13 @@ class App extends Component {
     // if on the private screen 
     else if (this.state.screen == "private"){
       Screen = () => {return (
-        <div>
+        <div className="text-center p-5">
           <p>Looks like you don't have any group chats yet...</p>
-          <ActionButton text="Start a private group chat" color="blue" fixed={true} action={() => this.togglePopup(false)}/>
+          <img src="alex.png" className="py-3"/>
+          <div className="mt-3">
+            <p className="pb-3">Have some Tandem partners you want to invite to a group chat?</p>
+            <ActionButton text="Start a private group chat" color="blue" action={() => this.togglePopup(false)}/>
+          </div>
         </div>
       )}
     }
@@ -121,65 +144,66 @@ class App extends Component {
     // if inside a group category
     else if (this.state.screen.split("_")[0] == "category"){
       var category = this.state.screen.split("_")[1]
-      
-      // should randomize these here to prevent duplicates
-      const emojis = Array.from({length: 13}, (_, i) => i + 1)
-      const flags = Array.from({length: 11}, (_, i) => i + 14)
-      const groupSizes = [6, 11, 22, 105]
 
-      function shuffleArray(array) {
-        for (let i = array.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [array[i], array[j]] = [array[j], array[i]];
-        }
-        return array
-      }
-      
-      // random for each 
       var chatsFlags = []
 
-      var randomData = {
-        screensEmojis: shuffleArray(emojis).slice(0,4),
-        screensGroupSizes: shuffleArray(groupSizes)
-      }
 
       Screen = () => {return (
         <>
         <div className="category-header d-flex">
-          <div className="back-arrow col-1" onClick={this.handleBackToPublic}>
-            BACK
+          <div className="back-arrow d-flex" onClick={this.handleBackToPublic}>
+            <img src="/arrow.png" className="arrow m-auto"/>
           </div>
-          <div className="back-arrow col-10 text-center">
+          <div className="text-center category-title-holder">
             <p className="category-title">{categoryData[category].title}</p>
           </div>
         </div>
-        <div className="row-holder">
+        <div className="row-holder" onClick={this.toggleShowsOver}>
         {chatData[category].map((item, i) => {
           chatsFlags = shuffleArray(flags).slice(0, 4)
           return <Category data={item} key={i} itemType="chat" randomData={randomData} index={i} chatsFlags={chatsFlags}/>
         })
         }
       </div>
-      <div className="fixed-button-pos text-center">
-        <p>Want to chat about something else?</p>
-        <ActionButton text="Start new public group chat" color="blue" action={() => this.togglePopup(true)}/>
+      <div className="create-public-group-holder text-center">
+        <div className="m-auto">
+          <p className="pb-2">Want to chat about something else?</p>
+          <ActionButton text="Start new public group chat" color="blue" action={() => this.togglePopup(true)}/>
+        </div>
       </div>
       </>
       )}
     }
 
-    return (
-      <div className="app h-100">
+    let Popup = () => {
+      
+      if (this.state.showsOver) {
+        return (
+          <div className={"popup-main px-3 " + (this.state.popup ? "d-block": "d-none")}>
+            <p className='text-center create-group-title'>Sorry...</p>
+            <p className='text-center py-3'>Tandem groups aren’t quite ready yet. We’ll let you know when they are fully available.</p>
+            <ActionButton text="Back to groups" color="blue" specId="back-to-groups" action={this.togglePopup}/>
+          </div> 
+        )
+      }
+
+      return (
         <div className={"popup-main px-3 " + (this.state.popup ? "d-block": "d-none")}>
           <p className='text-center create-group-title'>{this.state.publicGroup ? "Create a public group" : "Create a private group"}</p>
           <p className='text-center'>{this.state.publicGroup ? "Create a group chat that anyone on Tandem with your language pairing can join." : "Create a private group chat and invite your Tandem partners to join."}</p>
           <div className="input-holder">
-            <input placeholder="Group name"></input>
-            <input placeholder="Group category"></input>
+            <input placeholder="Group name" className="mb-3"></input>
           </div>
-          <ActionButton text={this.state.publicGroup ? "Create Public Group Chat" : "Create Private Group Chat"} color="blue" specId="create-group-chat"/>
+          <ActionButton text={this.state.publicGroup ? "Create Public Group Chat" : "Create Private Group Chat"} color="blue" specId="create-group-chat" action={() => this.toggleShowsOver(false)}/>
           <p className="text-center mb-2" onClick={this.togglePopup}>Cancel</p>
-        </div>
+        </div> 
+      )
+    }
+
+
+    return (
+      <div className="app h-100">
+        <Popup/>
         <div className={"overlay w-100 h-100 " + (this.state.popup ? "d-flex": "d-none")}></div>
         {this.state.screen == "public" || this.state.screen == "private" 
         ? <div className="sliding-header d-flex">

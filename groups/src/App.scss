@@ -85,6 +85,7 @@ p {
 
 .category-header {
   padding: 10px 0px;
+  border-bottom: $tandem-grey 1px solid;
 }
 
 .pink-background {background-color: $tandem-pink}
@@ -96,8 +97,13 @@ p {
   left: 35px;
 }
 
-.seeMoreButton {
-  margin-top: 10px !important;
+.see-more-holder {
+  height: calc(100vh - 495px);
+  display: flex;
+}
+
+.no-underline {
+  margin: auto;
 }
 
 .bottom-row-info {
@@ -132,10 +138,16 @@ p {
  font-size: 12px !important;
 }
 
+#back-to-groups {
+  margin-bottom: 20px; 
+  margin-top: 8px;
+  font-size: 12px !important;
+ }
+
 .create-group-title {
   font-size: 20px;
   font-weight: bolder;
-  padding: 10px 0px;
+  padding: 15px 0 0 0;
 }
 
 input {
@@ -147,4 +159,23 @@ input {
 
 .input-holder {
   padding-top: 15px;
+}
+
+.create-public-group-holder {
+  height: calc(100vh - 360px - 51px);
+  display: flex;
+  align-content: center;
+}
+
+.arrow {
+  height: 25px;
+  width: 30px;
+}
+
+.back-arrow {
+  width: 90px;
+}
+
+.category-title-holder {
+  width: calc(100vw - 180px)
 }
