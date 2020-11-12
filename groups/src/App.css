@@ -52,9 +52,12 @@
     text-align: center;
     width: 250px;
     border-radius: 50px;
-    font-size: 18px;
     padding: 5px;
-    margin:auto;
+    margin: auto;
+  }
+
+  .seeMoreContainer {
+    font-size: 18px;
   }
   
   /* Black Overlay */
@@ -87,7 +90,6 @@
   .text-container {height: 217px;}
   .text-container-2 {height: 120px;}
   .text-container-3 {height: 297px;}
-  .seeMoreContainer {height: 77px;}
   textarea {height: 177px;}
   
   .close-button {

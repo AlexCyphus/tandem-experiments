@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Category({data, onClick, itemType}) {
+function Category({data, onClick, itemType, randomData, index, chatsFlags}) {
   if (itemType == 'category'){
     return (
       <div className="row-item d-flex" onClick={onClick}>
@@ -16,16 +16,21 @@ function Category({data, onClick, itemType}) {
   } 
 
   else if (itemType == "chat"){
+    console.log(randomData)
     return (
       <div className="row-item d-flex" onClick={onClick}>
         <div className="image-left d-flex">
-          <img src="/alex.png" className="image m-auto"/>
+          <img src={"/emojis/"+randomData.screensEmojis[index]+".png"} className="image m-auto"/>
         </div>
         <div className="content-right">
           <p className="bold item-content-title">{data}</p>
           <div className="bottom-row-info d-flex">
-            <div className="col-auto p-0 pr-3 text-left"><p className="">People: 12</p></div>
-            <div className="col p-0 text-right"><p>I AM FLAGS :)</p></div>
+            <div className="col-auto p-0 pr-3 text-left"><p className="">People: {randomData.screensGroupSizes[index]}</p></div>
+            <div className="col p-0 justify-content-end d-flex">
+              {chatsFlags.map((i) => {
+                return <img src={"/emojis/"+i+".png"} className="flag"/>
+              })}
+            </div>
           </div>
         </div>
       </div>
