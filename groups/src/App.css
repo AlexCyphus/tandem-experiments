@@ -57,7 +57,7 @@
   }
 
   .seeMoreContainer {
-    font-size: 18px;
+    font-size: 16px;
   }
   
   /* Black Overlay */
@@ -159,5 +159,6 @@
       text-decoration: none !important;
   }
   
-  
-  
+  #button-holder {
+    margin-top: 15px !important;
+  }

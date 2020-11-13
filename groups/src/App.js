@@ -7,29 +7,30 @@ const categoryData = {
   seriousLearning: {
     title: "Serious learning",
     description: "Find other learners looking to rapidly improve their language skills",
-    image: "/emojis/12.png"
+    image: "/emojis/31.svg"
   },
   relaxedLearning: {
     title: "Relaxed learning",
     description: "Meet language learners interested in chatting while improving their language skills.",
-    image: "/emojis/6.png" 
+    image: "/emojis/32.svg" 
   },
   justChatting: {
     title: "Just chatting",
     description: "Meet and chat with Tandem members from all over the world.",
-    image: "/emojis/8.png" 
+    image: "/emojis/34.svg" 
   },
   hobbiesAndInterests: {
     title: "Hobbies and interests",
     description: "Find out what people do for fun around the globe.",
-    image: "/emojis/3.png" 
+    image: "/emojis/30.svg" 
   },
   tandemPair: {
     title: "Tandem Pair",
     description: "Join a group with another English speaker and two Spanish speakers.",
-    image: "/emojis/5.png" 
+    image: "/emojis/33.svg" 
   }
 }
+
 
 const chatData = {
   seriousLearning: ["Grammar tips", "Useful vocab + phrases", "Pronounciation help", "Learning resources"],
@@ -39,7 +40,7 @@ const chatData = {
 }
 
 // should randomize these here to prevent duplicates
-const emojis = Array.from({length: 13}, (_, i) => i + 1)
+const emojis = Array.from({length: 9}, (_, i) => i + 1)
 const flags = Array.from({length: 11}, (_, i) => i + 14)
 const groupSizes = [6, 11, 22, 105]
 
@@ -61,7 +62,7 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      screen: "category_relaxedLearning",
+      screen: "private",
       popup: false,
       publicGroup: true,
       showsOver: false
@@ -132,7 +133,7 @@ class App extends Component {
       Screen = () => {return (
         <div className="text-center p-5">
           <p>Looks like you don't have any group chats yet...</p>
-          <img src="alex.png" className="py-3"/>
+          <img src="/emojis/4.svg" className="py-3 private-chat-image"/>
           <div className="mt-3">
             <p className="pb-3">Have some Tandem partners you want to invite to a group chat?</p>
             <ActionButton text="Start a private group chat" color="blue" action={() => this.togglePopup(false)}/>
@@ -154,21 +155,21 @@ class App extends Component {
           <div className="back-arrow d-flex" onClick={this.handleBackToPublic}>
             <img src="/arrow.png" className="arrow m-auto"/>
           </div>
-          <div className="text-center category-title-holder">
+          <div className="category-title-holder">
             <p className="category-title">{categoryData[category].title}</p>
           </div>
         </div>
         <div className="row-holder" onClick={this.toggleShowsOver}>
-        {chatData[category].map((item, i) => {
-          chatsFlags = shuffleArray(flags).slice(0, 4)
-          return <Category data={item} key={i} itemType="chat" randomData={randomData} index={i} chatsFlags={chatsFlags}/>
-        })
-        }
+          {chatData[category].map((item, i) => {
+            chatsFlags = shuffleArray(flags).slice(0, 4)
+            return <Category data={item} key={i} itemType="chat" randomData={randomData} index={i} chatsFlags={chatsFlags}/>
+          })
+          }
       </div>
       <div className="create-public-group-holder text-center">
-        <div className="m-auto">
+        <div className="m-auto" id="button-holder">
           <p className="pb-2">Want to chat about something else?</p>
-          <ActionButton text="Start new public group chat" color="blue" action={() => this.togglePopup(true)}/>
+          <ActionButton text="Start public group chat" color="blue" action={() => this.togglePopup(true)}/>
         </div>
       </div>
       </>
@@ -204,7 +205,7 @@ class App extends Component {
     return (
       <div className="app h-100">
         <Popup/>
-        <div className={"overlay w-100 h-100 " + (this.state.popup ? "d-flex": "d-none")}></div>
+        <div className={"overlay w-100 h-100 " + (this.state.popup ? "d-flex": "d-none")} onClick={this.togglePopup}></div>
         {this.state.screen == "public" || this.state.screen == "private" 
         ? <div className="sliding-header d-flex">
           <div className={"tab-slider col-6 text-center bold " + (this.state.screen == "public" ? 'blue' : null)} onClick={() => this.handleScreenChange("public")}><p>Public</p></div>

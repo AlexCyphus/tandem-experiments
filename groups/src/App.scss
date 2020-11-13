@@ -3,7 +3,7 @@
 
 $tandem-blue: #22C1D7;
 $tandem-pink: #ED5481;
-$tandem-grey: #B2B2B2;
+$tandem-grey: #CECECE;
 $item-row-height: 90px;
 $shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
 
@@ -31,7 +31,6 @@ p {
 .sliding-header {
   border-bottom: $tandem-grey 1px solid;
   //margin-bottom: 10px;
-  box-shadow: $shadow
 }
 
 .blue {
@@ -66,10 +65,13 @@ p {
 }
 
 .image-left {
-  background-color: $tandem-blue;
-  min-width: $item-row-height - 5px !important;
-  max-width: $item-row-height - 5px !important;
-  //border-radius: 10px 0 0 10px; 
+  background-color: white;
+  width: 90px;
+  margin: auto;
+  border-radius: 100%;
+  height: 70px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .image {
@@ -104,6 +106,7 @@ p {
 
 .no-underline {
   margin: auto;
+  margin-top: 10px;
 }
 
 .bottom-row-info {
@@ -118,15 +121,22 @@ p {
 }
 
 .flag {
-  height: 15px;
+  height: 20px;
   padding: 1px;
+  border-radius: 500px;
+  object-fit: cover;
+  width: 20px;
+}
+
+.flag-holder {
+  margin-right: 5px;
 }
 
 .popup-main {
-  width: 250px;
+  width: 275px;
   top: 50px;
   border-radius: 10px;
-  left: calc((100vw - 250px)/2);
+  left: calc((100vw - 275px)/2);
   background-color: white;
   opacity: 1;
   z-index: 11;
@@ -154,11 +164,12 @@ input {
   margin: 5px 0 !important;
   font-weight: lighter;
   width: 100%;
-  padding: 5px;
+  border: 0;
+  border-bottom: 2px darkgrey solid;
 }
 
 .input-holder {
-  padding-top: 15px;
+  padding: 15px 10px 0px 10px;
 }
 
 .create-public-group-holder {
@@ -168,14 +179,29 @@ input {
 }
 
 .arrow {
-  height: 25px;
-  width: 30px;
+  height: 20px;
+  width: 25px;
 }
 
 .back-arrow {
-  width: 90px;
+  margin-left: 15px !important;
 }
 
 .category-title-holder {
-  width: calc(100vw - 180px)
+  padding-left: 15px !important;
+}
+
+.image {
+  filter: invert(78%) sepia(65%) saturate(2247%) hue-rotate(145deg) brightness(88%) contrast(91%);
+  opacity: 0.7;
+}
+
+.row-item {
+  z-index: 15;
+}
+
+.private-chat-image {
+  height: 200px;
+  filter: invert(78%) sepia(65%) saturate(2247%) hue-rotate(145deg) brightness(88%) contrast(91%);
+  margin-top: 10px;
 }
