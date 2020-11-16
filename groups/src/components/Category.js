@@ -25,7 +25,7 @@ function Category({data, onClick, itemType, randomData, index, chatsFlags}) {
         <div className="content-right">
           <p className="bold item-content-title">{data}</p>
           <div className="bottom-row-info d-flex">
-            <div className="col-auto p-0 pr-3 text-left"><p className="">👤 {randomData.screensGroupSizes[index]}</p></div>
+            <div className="col-auto p-0 pr-3 text-left"><p className="person-count">👤 {randomData.screensGroupSizes[index]}</p></div>
             <div className="col p-0 justify-content-end d-flex flag-holder">
               {chatsFlags.map((i) => {
                 return <img src={"/emojis/"+i+".png"} className="flag"/>

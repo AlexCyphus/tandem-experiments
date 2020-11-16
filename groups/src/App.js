@@ -3,6 +3,17 @@ import ActionButton from "./components/ActionButton"
 import Category from "./components/Category"
 import './App.scss';
 
+
+const NativeApp = {
+  sendTrackingPoint(e){console.log(e)}
+}
+
+function tp(name){
+  const prefix = "groups_"
+  name = prefix + name
+  NativeApp.sendTrackingPoint(name)
+}
+
 const categoryData = {
   seriousLearning: {
     title: "Serious learning",
@@ -62,7 +73,7 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      screen: "private",
+      screen: "public",
       popup: false,
       publicGroup: true,
       showsOver: false
@@ -113,12 +124,15 @@ class App extends Component {
   render() {
     let Screen = () => null
 
+    var arrayOfCategories = shuffleArray(Object.keys(categoryData))
+
     // if on the public screen
     if (this.state.screen == "public"){
+      tp("PublicSeen")
       Screen = () => {return (
         <>
           <div className="row-holder">
-            {Object.keys(categoryData).map(category => {
+            {arrayOfCategories.map(category => {
               return <Category data={categoryData[category]} onClick={() => this.handleOpenGroup(category)} itemType="category"/>
             })
             }
@@ -196,7 +210,7 @@ class App extends Component {
             <input placeholder="Group name" className="mb-3"></input>
           </div>
           <ActionButton text={this.state.publicGroup ? "Create Public Group Chat" : "Create Private Group Chat"} color="blue" specId="create-group-chat" action={() => this.toggleShowsOver(false)}/>
-          <p className="text-center mb-2" onClick={this.togglePopup}>Cancel</p>
+          <p className="text-center cancel" onClick={this.togglePopup}>Cancel</p>
         </div> 
       )
     }
