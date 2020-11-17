@@ -8,6 +8,8 @@ import './App.scss';
 //   sendTrackingPoint(e){console.log(e)}
 // }
 
+const NativeApp = window.NativeApp
+
 function tp(name){
   if (name == undefined){
     return null
