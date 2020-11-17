@@ -4,9 +4,7 @@ import Category from "./components/Category"
 import './App.scss';
 
 
-// const NativeApp = {
-//   sendTrackingPoint(e){console.log(e)}
-// }
+const alreadyCalledTp = []
 
 const NativeApp = window.NativeApp
 
@@ -14,14 +12,16 @@ function tp(name){
   if (name == undefined){
     return null
   }
-  const prefix = "groups_"
+  const prefix = "Exp_Grp_"
   name = prefix + name
-  if (localStorage.getItem(name) !== true){return NativeApp.sendTrackingPoint(name)}
-  else {return localStorage.setItem(name, true)}
+  if (alreadyCalledTp.indexOf(name) === -1){
+    NativeApp.sendTrackingPoint(name)
+    return alreadyCalledTp.push(name)
+  }
 }
 
 const categoryData = {
-  seriousLearning: {
+  srsLrn: {
     title: "Serious learning",
     description: "Find other learners looking to rapidly improve their language skills",
     image: "/emojis/31.svg"
@@ -31,17 +31,17 @@ const categoryData = {
   //   description: "Meet language learners interested in chatting while improving their language skills.",
   //   image: "/emojis/32.svg" 
   // },
-  justChatting: {
+  jstChat: {
     title: "Just chatting",
     description: "Meet and chat with Tandem members from all over the world.",
     image: "/emojis/34.svg" 
   },
-  hobbiesAndInterests: {
+  hbbyInts: {
     title: "Hobbies and interests",
     description: "Find out what people do for fun around the globe.",
     image: "/emojis/30.svg" 
   },
-  tandemPair: {
+  tndPair: {
     title: "Tandem Pair",
     description: "Join a group with another English speaker and two Spanish speakers.",
     image: "/emojis/33.svg" 
@@ -50,10 +50,10 @@ const categoryData = {
 
 
 const chatData = {
-  seriousLearning: ["Grammar tips", "Useful vocab + phrases", "Pronounciation help", "Learning resources"],
+  srsLrn: ["Grammar tips", "Useful vocab + phrases", "Pronounciation help", "Learning resources"],
   relaxedLearning: ["What are your favorite ways to learn?", "Learning tips", "Big group Tandem", "Book recommendations"],
-  justChatting: ["How's your day?", "Introduce yourself!", "What is the meaning of life?", "Gossip"],
-  hobbiesAndInterests: ["Sports", "TV Shows", "Music", "Exploring nature"]
+  jstChat: ["How's your day?", "Introduce yourself!", "What is the meaning of life?", "Gossip"],
+  hbbyInts: ["Sports", "TV Shows", "Music", "Exploring nature"]
 }
 
 // should randomize these here to prevent duplicates
@@ -106,7 +106,7 @@ class App extends Component {
   handleOpenGroup(group, trackingPoint){
     tp(trackingPoint)
     let screen = "category_" + group
-    if (group == "tandemPair"){
+    if (group == "tndPair"){
       return this.toggleShowsOver()
     }
     this.setState({screen})
@@ -137,7 +137,7 @@ class App extends Component {
     tp("SryMsgSeen")
     if(dontPopup){this.togglePopup()}
     this.setState({showsOver: true})
-    if(trackingPoint == "CreatePublicChatClicked" || trackingPoint == "CreatePrivateChatClicked"){
+    if(trackingPoint == "CrtPblicChat_Clicked" || trackingPoint == "CrtPrvtChat_Clicked"){
       let privacy = trackingPoint.split("")[7] === "u" ? "Public" : "Private"
       let groupName = document.getElementById("groupName").value
       var xhr = new XMLHttpRequest()
@@ -159,7 +159,7 @@ class App extends Component {
         <>
           <div className="row-holder">
             {arrayOfCategories.map(category => {
-              let tp = "Ctgry_"+category+"_Clckd"
+              let tp = category+"_Clckd"
               return <Category data={categoryData[category]} onClick={() => this.handleOpenGroup(category, tp)} itemType="category"/>
             })
             }
@@ -178,7 +178,7 @@ class App extends Component {
           <img src="/emojis/4.svg" className="py-3 private-chat-image"/>
           <div className="mt-3">
             <p className="pb-3">Have some Tandem partners you want to invite to a group chat?</p>
-            <ActionButton text="Start a private group chat" color="blue" action={() => this.togglePopup(false, "StartPrivateChat_Clicked")}/>
+            <ActionButton text="Start a private group chat" color="blue" action={() => this.togglePopup(false, "StrtPrivChat_Clickd")}/>
           </div>
         </div>
       )}
@@ -194,7 +194,7 @@ class App extends Component {
       Screen = () => {return (
         <>
         <div className="category-header d-flex">
-          <div className="back-arrow d-flex" onClick={() => this.handleBackToPublic("BackButton_Clckd")}>
+          <div className="back-arrow d-flex" onClick={() => this.handleBackToPublic("BckBtn_Clckd")}>
             <img src="/arrow.png" className="arrow m-auto"/>
           </div>
           <div className="category-title-holder">
@@ -204,7 +204,8 @@ class App extends Component {
         <div className="row-holder">
           {chatData[category].map((item, i) => {
             chatsFlags = shuffleArray(flags).slice(0, 4)
-            return <Category data={item} key={i} itemType="chat" randomData={randomData} index={i} chatsFlags={chatsFlags} onClick={() => this.toggleShowsOver(true, "Ctgry_"+category+"_"+item.replace(/[^a-z0-9+]+/gi, '')+"_"+randomData.screensGroupSizes[i])}/>
+            let trackingPoint = category+"_"+item.split(" ")[0].replace(/[^a-zA-Z0-9]/, '')+"_"+randomData.screensGroupSizes[i]
+            return <Category data={item} key={i} itemType="chat" randomData={randomData} index={i} chatsFlags={chatsFlags} onClick={() => this.toggleShowsOver(true, trackingPoint)}/>
           })
           }
       </div>
@@ -237,7 +238,7 @@ class App extends Component {
           <div className="input-holder">
             <input placeholder="Group name" id="groupName" className="mb-3"></input>
           </div>
-          <ActionButton type="submit" text={this.state.publicGroup ? "Create Public Group Chat" : "Create Private Group Chat"} color="blue" specId="create-group-chat" action={() => this.toggleShowsOver(false, this.state.publicGroup ? "CreatePublicChatClicked" : "CreatePrivateChatClicked")}/>
+          <ActionButton type="submit" text={this.state.publicGroup ? "Create Public Group Chat" : "Create Private Group Chat"} color="blue" specId="create-group-chat" action={() => this.toggleShowsOver(false, this.state.publicGroup ? "CrtPblicChat_Clicked" : "CrtPrvtChat_Clicked")}/>
           <p className="text-center cancel" onClick={() => this.togglePopup(null, "Cancel")}>Cancel</p>
         </div> 
       )

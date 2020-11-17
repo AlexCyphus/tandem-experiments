@@ -6,10 +6,14 @@ $tandem-pink: #ED5481;
 $tandem-grey: #cecece7a;
 $item-row-height: 90px;
 $shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+$font-size-xs: 12px;
+$font-size-sm: 15px;
+$font-size-md: 20px;
+$font-size-lg: 25px;
 
 #root {
   overflow-x: hidden;
-  font-size: 12px;
+  font-size: $font-size-sm;
   font-family: Roboto;
   height: 100vh;
   background-color: #F6F3F0;
@@ -43,7 +47,7 @@ p {
 }
 
 .tab-slider {
-  padding: 12px 0; 
+  padding: 15px 0 12px 0;
 }
 
 .row-item {
@@ -56,7 +60,7 @@ p {
 }
 
 .item-content-title {
-  font-size: 15px !important;
+  font-size: $font-size-md !important;
 }
 
 .content-right {
@@ -82,7 +86,7 @@ p {
 }
 
 .category-title {
-  font-size: 20px;
+  font-size: $font-size-lg;
   font-weight: bolder;
 }
 
@@ -134,10 +138,10 @@ p {
 }
 
 .popup-main {
-  width: 275px;
+  width: 90vw;
   top: 50px;
   border-radius: 10px;
-  left: calc((100vw - 275px)/2);
+  left: calc((10vw)/2);
   background-color: white;
   opacity: 1;
   z-index: 11;
@@ -146,17 +150,17 @@ p {
 
 #create-group-chat {
  margin-bottom: 5px; 
- font-size: 12px !important;
+ font-size: $font-size-sm !important;
 }
 
 #back-to-groups {
   margin-bottom: 20px; 
   margin-top: 8px;
-  font-size: 12px !important;
+  font-size: $font-size-sm !important;
  }
 
 .create-group-title {
-  font-size: 20px;
+  font-size: $font-size-lg;
   font-weight: bolder;
   padding: 15px 0 10px 0;
 }
@@ -211,6 +215,9 @@ input {
 .seeMoreButton {
   margin-left: 10px;
   margin-right: 10px;
+  min-width: 250px;
+  font-size: $font-size-sm;
+  width: auto !important;
 }
 
 .cancel {
@@ -219,5 +226,5 @@ input {
 }
 
 .person-count {
-  font-size: 10px;
+  font-size: $font-size-xs;
 }
