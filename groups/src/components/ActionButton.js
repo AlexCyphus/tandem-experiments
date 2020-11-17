@@ -10,9 +10,9 @@ function ActionButton({action, text, specId, fixed=false, color}) {
 
   return ([
     <a className="no-underline" onClick={action}>
-      <div className={"seeMoreContainer d-flex"} id={specId}>
+      <div className={"seeMoreContainer d-flex justify-content-center "} id={specId}>
         <div className={classes + color} >
-          <p className="m-0 no-underline">{text}</p>
+          <p className="m-0 no-underline">{text.toUpperCase()}</p>
         </div>
       </div>
     </a>

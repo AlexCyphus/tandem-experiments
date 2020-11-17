@@ -16,7 +16,6 @@ function Category({data, onClick, itemType, randomData, index, chatsFlags}) {
   } 
 
   else if (itemType == "chat"){
-    console.log(randomData)
     return (
       <div className="row-item d-flex" onClick={onClick}>
         <div className="image-left d-flex">
