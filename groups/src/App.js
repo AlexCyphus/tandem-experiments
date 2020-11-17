@@ -4,20 +4,16 @@ import Category from "./components/Category"
 import './App.scss';
 
 
-const alreadyCalledTp = []
-
-const NativeApp = window.NativeApp
+const NativeApp = {sendTrackingPoint: (name) => {console.log(name)}} //window.NativeApp
 
 function tp(name){
   if (name == undefined){
     return null
   }
+  
   const prefix = "Exp_Grp_"
   name = prefix + name
-  if (alreadyCalledTp.indexOf(name) === -1){
-    NativeApp.sendTrackingPoint(name)
-    return alreadyCalledTp.push(name)
-  }
+  NativeApp.sendTrackingPoint(name)
 }
 
 const categoryData = {

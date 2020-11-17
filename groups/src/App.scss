@@ -61,10 +61,11 @@ p {
 
 .item-content-title {
   font-size: $font-size-md !important;
+  
 }
 
 .content-right {
-  padding: 17px 10px;
+  padding: 8px 10px;
   width: 100%;
 }
 
@@ -76,7 +77,7 @@ p {
   height: 70px;
   margin-left: 10px;
   margin-right: 10px;
-  box-shadow: $shadow;
+  //box-shadow: $shadow;
 }
 
 .image {
@@ -115,7 +116,7 @@ p {
 }
 
 .bottom-row-info {
-  padding-top: 15px;
+  padding-top: 3px;
 }
 
 .overlay {
@@ -227,4 +228,8 @@ input {
 
 .person-count {
   font-size: $font-size-xs;
+}
+
+.min-70 {
+  min-height: 70%;
 }
