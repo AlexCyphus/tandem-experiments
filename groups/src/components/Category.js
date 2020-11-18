@@ -19,7 +19,7 @@ function Category({data, onClick, itemType, randomData, index, chatsFlags}) {
     return (
       <div className="row-item d-flex" onClick={onClick}>
         <div className="image-left d-flex">
-          <img src={"/emojis/"+randomData.screensEmojis[index]+".svg"} className="image m-auto"/>
+          <img src={"emojis/"+randomData.screensEmojis[index]+".svg"} className="image m-auto"/>
         </div>
         <div className="content-right">
           <p className="bold item-content-title min-70">{data}</p>
@@ -27,7 +27,7 @@ function Category({data, onClick, itemType, randomData, index, chatsFlags}) {
             <div className="col-auto p-0 pr-3 text-left"><p className="person-count">👤 {randomData.screensGroupSizes[index]}</p></div>
             <div className="col p-0 justify-content-end d-flex flag-holder">
               {chatsFlags.map((i) => {
-                return <img src={"/emojis/"+i+".png"} className="flag"/>
+                return <img src={"emojis/"+i+".png"} className="flag"/>
               })}
             </div>
           </div>

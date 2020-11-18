@@ -4,7 +4,7 @@ import Category from "./components/Category"
 import './App.scss';
 
 
-const NativeApp = {sendTrackingPoint: (name) => {console.log(name)}} //window.NativeApp
+const NativeApp = window.NativeApp // {sendTrackingPoint: (name) => {console.log(name)}} // 
 
 function tp(name){
   if (name == undefined){
@@ -20,36 +20,36 @@ const categoryData = {
   srsLrn: {
     title: "Serious learning",
     description: "Find other learners looking to rapidly improve their language skills",
-    image: "/emojis/31.svg"
+    image: "emojis/31.svg"
   },
   // relaxedLearning: {
   //   title: "Relaxed learning",
   //   description: "Meet language learners interested in chatting while improving their language skills.",
-  //   image: "/emojis/32.svg" 
+  //   image: "emojis/32.svg" 
   // },
   jstChat: {
     title: "Just chatting",
     description: "Meet and chat with Tandem members from all over the world.",
-    image: "/emojis/34.svg" 
+    image: "emojis/34.svg" 
   },
   hbbyInts: {
     title: "Hobbies and interests",
     description: "Find out what people do for fun around the globe.",
-    image: "/emojis/30.svg" 
+    image: "emojis/30.svg" 
   },
   tndPair: {
     title: "Tandem Pair",
     description: "Join a group with another English speaker and two Spanish speakers.",
-    image: "/emojis/33.svg" 
+    image: "emojis/33.svg" 
   }
 }
 
 
 const chatData = {
-  srsLrn: ["Grammar tips", "Useful vocab + phrases", "Pronounciation help", "Learning resources"],
-  relaxedLearning: ["What are your favorite ways to learn?", "Learning tips", "Big group Tandem", "Book recommendations"],
-  jstChat: ["How's your day?", "Introduce yourself!", "What is the meaning of life?", "Gossip"],
-  hbbyInts: ["Sports", "TV Shows", "Music", "Exploring nature"]
+  srsLrn: shuffleArray(["Grammar tips", "Useful vocab + phrases", "Pronounciation help", "Learning resources"]),
+  relaxedLearning: shuffleArray(["Tell me your favorite ways to learn?", "Learning tips", "Big group Tandem", "Book recommendations"]),
+  jstChat: shuffleArray(["How's your day?", "Introduce yourself!", "What is the meaning of life?", "Gossip"]),
+  hbbyInts: shuffleArray(["Sports", "TV Shows", "Music", "Exploring nature"])
 }
 
 // should randomize these here to prevent duplicates
@@ -134,7 +134,7 @@ class App extends Component {
     if(dontPopup){this.togglePopup()}
     this.setState({showsOver: true})
     if(trackingPoint == "CrtPblicChat_Clicked" || trackingPoint == "CrtPrvtChat_Clicked"){
-      let privacy = trackingPoint.split("")[7] === "u" ? "Public" : "Private"
+      let privacy = (trackingPoint === "CrtPblicChat_Clicked" ? "Public" : "Private")
       let groupName = document.getElementById("groupName").value
       var xhr = new XMLHttpRequest()
       var url = "https://script.google.com/macros/s/AKfycbyqLtrrzDQWFSrrklsHJ-DxYChynLXTlnrg9tVtNJbZFJUhvDY/exec?groupName="+groupName+"&privacy="+privacy
@@ -171,7 +171,7 @@ class App extends Component {
       Screen = () => {return (
         <div className="text-center p-5">
           <p>Looks like you don't have any group chats yet...</p>
-          <img src="/emojis/4.svg" className="py-3 private-chat-image"/>
+          <img src="emojis/4.svg" className="py-3 private-chat-image"/>
           <div className="mt-3">
             <p className="pb-3">Have some Tandem partners you want to invite to a group chat?</p>
             <ActionButton text="Start a private group chat" color="blue" action={() => this.togglePopup(false, "StrtPrivChat_Clickd")}/>
@@ -182,8 +182,9 @@ class App extends Component {
 
     // if inside a group category
     else if (this.state.screen.split("_")[0] == "category"){
+      
       var category = this.state.screen.split("_")[1]
-
+      
       var chatsFlags = []
 
 
@@ -191,7 +192,7 @@ class App extends Component {
         <>
         <div className="category-header d-flex">
           <div className="back-arrow d-flex" onClick={() => this.handleBackToPublic("BckBtn_Clckd")}>
-            <img src="/arrow.png" className="arrow m-auto"/>
+            <img src="arrow.png" className="arrow m-auto"/>
           </div>
           <div className="category-title-holder">
             <p className="category-title">{categoryData[category].title}</p>
