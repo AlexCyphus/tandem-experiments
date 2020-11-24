@@ -4,7 +4,7 @@ import Category from "./components/Category"
 import './App.scss';
 
 
-const NativeApp = window.NativeApp // {sendTrackingPoint: (name) => {console.log(name)}} // 
+const NativeApp = {sendTrackingPoint: (name) => {console.log(name)}} // window.NativeApp //
 
 function tp(name){
   if (name == undefined){
@@ -13,7 +13,7 @@ function tp(name){
   
   const prefix = "Exp_Grp_"
   name = prefix + name
-  NativeApp.sendTrackingPoint(name)
+  //NativeApp.sendTrackingPoint(name)
 }
 
 const categoryData = {
