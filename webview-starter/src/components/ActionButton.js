@@ -13,14 +13,14 @@ export default function ActionButton({text, actionHandler, specClass, size, colo
                     </div>
                 </div>
             </a>
-            {close == true 
-            ? 
-            <a className="undecorated-link" onClick={actionHandler}>
-                <div className="close-button">
-                    <p>Close</p>
-                </div>
-            </a>
-            : null
+            {close == true ? 
+                <a className="undecorated-link" onClick={actionHandler}>
+                    <div className="close-button">
+                        <p>Close</p>
+                    </div>
+                </a>
+                :
+                null
             }
         </div>
     ])

@@ -1,18 +1,18 @@
 import ActionButton from "./ActionButton";
 
 // use conditional rendering in main file
-export default function Popup({description, children}) {
+export default function Popup({title, description, children, overlayHandler, placeholder, buttonText}) {
     console.log(description)
     return (
         <>
-        <div className="overlay-black"></div>
+        <div className="overlay-black" onClick={overlayHandler}></div>
         <div className="popup-container">
-            <p className='popup-title'>Title</p>
+            <p className='popup-title'>{title}</p>
             {description ? <p className='popup-description'>{description}</p>:children}
             <div className="popup-input-container">
-                <input placeholder="Placeholder"/>
+                <input placeholder={placeholder}/>
             </div>
-            <ActionButton text={"Hello world"} color="pink" close={true}/>
+            <ActionButton text={buttonText} color="pink" close={true}/>
         </div> 
         </>
     )

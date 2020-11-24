@@ -20,7 +20,8 @@ class App extends React.Component {
     super(props)
     this.state = {
       sliderScreen: 0,
-      popup: false
+      popup: true,
+      infocard: false
     }
     this.handleSliderChange = this.handleSliderChange.bind(this)
   }
@@ -45,10 +46,14 @@ class App extends React.Component {
           <p>Now I can put anything I want in here</p>
         </Row>
         <ActionButton text={"hello world"} color={"pink"} close={true}/>
-        {this.state.popup ? <Popup><h1>helo</h1></Popup> : null}
-        <InfoCard>
-        <p>HELLO WORLDHELLO WORLDHELLO WORLDHELLO WORLDHELLO WORLDHELLO WORLDHELLO WORLDHELLO WORLDHELLO WORLDHELLO WORLDHELLO WORLDHELLO WORLD</p>
+        {this.state.popup ? <Popup buttonText={"I am button"} text="i am description" placeholder="i am placeholder" title="poppy"><h1>helo</h1></Popup> : null}
+        {this.state.infocard ? 
+        <InfoCard buttonText={"I am button"} title={"I am infocard"}>
+          <p>HELLO WORLDHELLO WORLDHELLO WORLDHELLO WORLDHELLO WORLDHELLO WORLDHELLO WORLDHELLO WORLDHELLO WORLDHELLO WORLDHELLO WORLDHELLO WORLD</p>
         </InfoCard>
+        :
+        null
+        }
       </div>
     );
   }

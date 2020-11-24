@@ -1,6 +1,6 @@
 import { Children } from "react";
 
-export default function Row({title, image, mainContent, rowClickHandler, children}) {
+export default function Row({title, image, rowClickHandler, children}) {
     return (
         <div className="row-container" onClick={rowClickHandler}>
             <div className="row-image-container">
