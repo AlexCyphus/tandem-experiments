@@ -32,6 +32,28 @@ $horizontal-padding: 17px;
     background-color: #F6F3F0;
 }
 
+// black opaque overlay
+.overlay-black {
+    background-color: black;
+    position: fixed;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    opacity: 0.8;
+    z-index: 1;
+}
+
+.blue-background {background-color: $tandem-blue;}
+.pink-background {background-color: $tandem-pink;}
+.bold-pink {
+    color: $tandem-pink;
+    font-weight: bold;
+}
+.bold-blue {
+    color: $tandem-blue;
+    font-weight: bold;
+}
+
 // components/ActionButton.js
 .action-button-container {
     margin-top: 15px;
@@ -61,9 +83,6 @@ $horizontal-padding: 17px;
     margin-top: 12px;
     text-align: center;
 }
-
-.blue-background {background-color: $tandem-blue;}
-.pink-background {background-color: $tandem-pink;}
 
 // components/Slider.js
 .slider {
@@ -120,15 +139,6 @@ $horizontal-padding: 17px;
 }
 
 // components/Popup.js
-.overlay-black {
-    background-color: black;
-    position: fixed;
-    top: 0;
-    height: 100vh;
-    width: 100vw;
-    opacity: 0.8;
-}
-
 .popup-container {
     z-index: 2;
     position: fixed;
@@ -158,4 +168,48 @@ input {
     font-weight: bolder;
     font-size: $font-size-md;
     padding: 0 0 15px 0;
+}
+
+// components/InfoCard.js
+.infocard-container {
+    z-index: 3;
+    position: fixed;
+    top: calc(100vh - 350px);
+    background-color: white;
+    height: 350px;
+    border-radius: 15px 15px 0 0;
+    width: 100vw;
+}
+
+.infocard-title {
+    font-weight: bolder;
+    text-align: center;
+    padding: 25px 0;
+    font-size: $font-size-md
+}
+
+.infocard-main-content {
+    padding: 0 25px;
+}
+
+.button-fixed-bottom {
+    position: fixed; 
+    bottom: 20px;
+    width: 90%;
+    left: 5%;
+}
+
+.infocard-close-x {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    font-weight: bolder;
+    font-size: 20px;
+    color: white;
+    background-color: lightgray;
+    border-radius: 100%;
+    width: 25px;
+    text-align: center;
+    line-height: 1.1;
+    height: 25px;
 }

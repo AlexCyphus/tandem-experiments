@@ -4,6 +4,7 @@ import ActionButton from './components/ActionButton.js';
 import Row from './components/Row.js';
 import Slider from './components/Slider.js';
 import Popup from './components/Popup.js';
+import InfoCard from './components/InfoCard.js';
 
 function tp(name){
   // const NativeApp = window.NativeApp // real version
@@ -45,6 +46,9 @@ class App extends React.Component {
         </Row>
         <ActionButton text={"hello world"} color={"pink"} close={true}/>
         {this.state.popup ? <Popup><h1>helo</h1></Popup> : null}
+        <InfoCard>
+        <p>HELLO WORLDHELLO WORLDHELLO WORLDHELLO WORLDHELLO WORLDHELLO WORLDHELLO WORLDHELLO WORLDHELLO WORLDHELLO WORLDHELLO WORLDHELLO WORLD</p>
+        </InfoCard>
       </div>
     );
   }
