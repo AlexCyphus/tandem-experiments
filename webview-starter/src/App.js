@@ -5,6 +5,7 @@ import Row from './components/Row.js';
 import Slider from './components/Slider.js';
 import Popup from './components/Popup.js';
 import InfoCard from './components/InfoCard.js';
+import HeaderTitle from './components/HeaderTitle.js';
 import {tp, shuffleArray, postToSheets} from "./functions.js"
 
 class App extends React.Component {
@@ -12,7 +13,7 @@ class App extends React.Component {
     super(props)
     this.state = {
       sliderScreen: 0,
-      popup: true,
+      popup: false,
       infocard: false
     }
     this.handleSliderChange = this.handleSliderChange.bind(this)
@@ -25,13 +26,14 @@ class App extends React.Component {
   render(){
     return (
       <div className="App">
+        <HeaderTitle title={'I am category'}/>
         <Slider 
           title1={"Hello"}
           title2={"World"}
           sliderScreen={this.state.sliderScreen}
           handleSliderChange={this.handleSliderChange}
         />
-        <Row title="Computer McComputerface" image="./test-image.jpeg">
+        <Row title="Computer McComputerface" image="./test-image.jpeg" roundImage={true}>
           <p>Now I can put anything I want in here</p>
         </Row>
         <Row title="Computer McComputerface" image="./test-image.jpeg">
