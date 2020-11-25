@@ -15,6 +15,13 @@ You can then launch it as a regular Firebase REF experiment:
 
 A starter pack of reusable components, functions, and screen styles. 
 
+Available components
+* ActionButton
+* Infocard with overlay (appears from bottom)
+* Popup with overlay (placed in upper section of screen)
+* Row 
+* Slider 
+
 ### tandem-twitter
 In progress
 
