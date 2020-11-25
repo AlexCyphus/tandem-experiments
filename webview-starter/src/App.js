@@ -5,15 +5,7 @@ import Row from './components/Row.js';
 import Slider from './components/Slider.js';
 import Popup from './components/Popup.js';
 import InfoCard from './components/InfoCard.js';
-
-function tp(name){
-  // const NativeApp = window.NativeApp // real version
-  const NativeApp = {sendTrackingPoint: (name) => {console.log(name)}} // mock version
-  if (name == undefined){return null}
-  const prefix = "Exp_Grp_"
-  name = prefix + name
-  NativeApp.sendTrackingPoint(name)
-}
+import {tp, shuffleArray, postToSheets} from "./functions.js"
 
 class App extends React.Component {
   constructor(props) {

@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import ActionButton from "./components/ActionButton"
 import Category from "./components/Category"
 import './App.scss';
+import axios from 'axios'
 
-
+http://localhost:3000/emojis/31.svg
 const NativeApp = {sendTrackingPoint: (name) => {console.log(name)}} // window.NativeApp //
 
 function tp(name){
