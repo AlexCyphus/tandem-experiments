@@ -132,3 +132,11 @@ getPartners() => string
   }
 ]
 ```
+
+Note: language levels are denoted in the following way...
+
+Native: 250
+Fluent: ““
+Advanced: 100
+Intermediate: 50
+Beginner: 10
