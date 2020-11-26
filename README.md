@@ -42,20 +42,27 @@ In progress
 ### groups
 Testing different group types, sizes, topics, and propensity to start a group chat. Randomized all flags, images, and orders to prevent biases.
 
-![Screenshot](https://github.com/AlexCyphus/tandem-experiments/blob/master/github-images/Groups_1.png)
-![Screenshot](https://github.com/AlexCyphus/tandem-experiments/blob/master/github-images/Groups_2.png)
-![Screenshot](https://github.com/AlexCyphus/tandem-experiments/blob/master/github-images/Groups_3.png)
-![Screenshot](https://github.com/AlexCyphus/tandem-experiments/blob/master/github-images/Groups_4.png)
-![Screenshot](https://github.com/AlexCyphus/tandem-experiments/blob/master/github-images/Groups_5.png)
-![Screenshot](https://github.com/AlexCyphus/tandem-experiments/blob/master/github-images/Groups_6.png)
+<p>
+<img src="https://github.com/AlexCyphus/tandem-experiments/blob/master/github-images/Groups_1.png" width="200">
+<img src="https://github.com/AlexCyphus/tandem-experiments/blob/master/github-images/Groups_2.png" width="200">
+<img src="https://github.com/AlexCyphus/tandem-experiments/blob/master/github-images/Groups_3.png" width="200">
+<img src="https://github.com/AlexCyphus/tandem-experiments/blob/master/github-images/Groups_4.png" width="200">
+<img src="https://github.com/AlexCyphus/tandem-experiments/blob/master/github-images/Groups_5.png" width="200">
+<img src="https://github.com/AlexCyphus/tandem-experiments/blob/master/github-images/Groups_6.png" width="200">
+</p>
+
+![test image size](/img/post-bg-2015.jpg){:class="img-responsive"}
+
 
 ### life 
 The first iteration of the webview experiments. Launched to ~1000 users to ensure everything was working properly. It was pre-tracking points and used an SQL database to track clicks. Tested a social media feed where users could see different content types and interact with them. 
+<p>
+<img src="https://github.com/AlexCyphus/tandem-experiments/blob/master/github-images/Life_1.png" width="200">
+<img src="https://github.com/AlexCyphus/tandem-experiments/blob/master/github-images/Life_2.png" width="200">
+<img src="https://github.com/AlexCyphus/tandem-experiments/blob/master/github-images/Life_3.png" width="200">
+<img src="https://github.com/AlexCyphus/tandem-experiments/blob/master/github-images/Life_4.png" width="200">
+</p>
 
-![Screenshot](https://github.com/AlexCyphus/tandem-experiments/blob/master/github-images/Life_1.png)
-![Screenshot](https://github.com/AlexCyphus/tandem-experiments/blob/master/github-images/Life_2.png)
-![Screenshot](https://github.com/AlexCyphus/tandem-experiments/blob/master/github-images/Life_3.png)
-![Screenshot](https://github.com/AlexCyphus/tandem-experiments/blob/master/github-images/Life_4.png)
 
 ### JSON structures
 
