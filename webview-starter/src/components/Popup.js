@@ -8,7 +8,9 @@ export default function Popup({title, description, children, overlayHandler, pla
         <div className="overlay-black" onClick={overlayHandler}></div>
         <div className="popup-container">
             <p className='popup-title'>{title}</p>
-            {description ? <p className='popup-description'>{description}</p>:children}
+            <div className="popup-description-holder">
+                {description ? <p className='popup-description'>{description}</p>:children}
+            </div>
             <div className="popup-input-container">
                 <input placeholder={placeholder}/>
             </div>

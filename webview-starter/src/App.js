@@ -6,6 +6,7 @@ import Slider from './components/Slider.js';
 import Popup from './components/Popup.js';
 import InfoCard from './components/InfoCard.js';
 import HeaderTitle from './components/HeaderTitle.js';
+import FixedButton from './components/FixedButton.js';
 import {tp, shuffleArray, postToSheets} from "./functions.js"
 
 class App extends React.Component {
@@ -37,10 +38,17 @@ class App extends React.Component {
           <p>Now I can put anything I want in here</p>
         </Row>
         <Row title="Computer McComputerface" image="./test-image.jpeg">
-          <p>Now I can put anything I want in here</p>
+          <p>Now I can put anything I want in here here here here here here here here here here here here here here here here here here here here here here here here here here here here here here here here here here here here here here here here here here here here here</p>
         </Row>
-        <ActionButton text={"hello world"} color={"pink"} close={true}/>
-        {this.state.popup ? <Popup buttonText={"I am button"} text="i am description" placeholder="i am placeholder" title="poppy"><h1>helo</h1></Popup> : null}
+        <ActionButton text={"hello world"} color={"blue"} close={true}/>
+        {this.state.popup ? <Popup buttonText={"I am button"} text="i am description" placeholder="i am placeholder" title="poppy">
+         <p>hello</p>
+         <p>hello hello hello v hello vvhellohellohello hello hello hello hello hello hello hello hello v</p>
+         <p>hello</p>
+         <p>hello</p>
+         <p>hello</p>
+         
+        </Popup> : null}
         {this.state.infocard ? 
         <InfoCard buttonText={"I am button"} title={"I am infocard"}>
           <p>HELLO WORLDHELLO WORLDHELLO WORLDHELLO WORLDHELLO WORLDHELLO WORLDHELLO WORLDHELLO WORLDHELLO WORLDHELLO WORLDHELLO WORLDHELLO WORLD</p>
@@ -48,6 +56,7 @@ class App extends React.Component {
         :
         null
         }
+        <FixedButton image="/logo192.png"/>
       </div>
     );
   }

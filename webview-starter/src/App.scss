@@ -5,7 +5,7 @@ $tandem-blue: #22C1D7;
 $tandem-pink: #ED5481;
 $light-grey: #cecece7a;
 $dark-grey: #616161;
-$row-height: 120px;
+$row-height: 100px;
 $shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
 $font-size-xs: 12px;
 $font-size-sm: 15px;
@@ -22,7 +22,7 @@ $horizontal-padding: 17px;
     -webkit-user-select: none; /* Safari */        
     user-select: none; /* Standard */
     -webkit-tap-highlight-color: transparent;
-    
+    letter-spacing: 0.3px;
     p {margin: 0;}
 }
 
@@ -70,7 +70,7 @@ $horizontal-padding: 17px;
     text-decoration: none;
     cursor: pointer;
     border-radius: 50px;
-    padding: 7px 25px;
+    padding: 11px 25px;
     width: 100%;
     font-size: $font-size-md
 }
@@ -83,6 +83,7 @@ $horizontal-padding: 17px;
 .close-button {
     margin-top: 12px;
     text-align: center;
+    text-decoration: underline;
 }
 
 // components/Slider.js
@@ -114,24 +115,25 @@ $horizontal-padding: 17px;
     min-height: $row-height;
     border-bottom: 1px $light-grey solid;
     display: flex;
-    padding: 0px $horizontal-padding;
+    padding: 15px $horizontal-padding;
 }
 
 .row-image-container {
     width: $row-height;
-    padding: 5px 0px;
-    height: 70px;    
+    display: flex;   
 }
 
 .row-image {
-    max-height: $row-height - 10px;
+    max-height: $row-height - 5px;
     border-radius: 8px;
     margin: auto;
 }
 
 .row-text-container {
-    padding: 5px 5px;
-    width: calc(100% - #{$row-height} - 17px)
+    padding: 0px 10px;
+    width: calc(100% - #{$row-height} - 17px);
+    max-height: $row-height - 7.5px;
+    overflow: hidden;
 }
 
 .row-title {
@@ -144,9 +146,9 @@ $horizontal-padding: 17px;
     z-index: 2;
     position: fixed;
     background-color: white;
-    padding: 15px;
-    min-width: 80vw;
-    left: calc(10vw - 15px);
+    padding: 15px 5vw;
+    width: 80vw;
+    left: calc(5vw);
     top: 50px;
     border-radius: 15px;
 }
@@ -154,6 +156,10 @@ $horizontal-padding: 17px;
 .popup-input-container {
     width: 100%;
     padding: 15px 0px
+}
+
+.popup-description-holder {
+    p {padding-bottom: 10px;}
 }
 
 input {
@@ -165,7 +171,7 @@ input {
 }
 
 .popup-title {
-    text-align: center;
+    text-align: left;
     font-weight: bolder;
     font-size: $font-size-md;
     padding: 0 0 15px 0;
@@ -184,13 +190,13 @@ input {
 
 .infocard-title {
     font-weight: bolder;
-    text-align: center;
-    padding: 25px 0;
+    text-align: left;
+    padding: 25px 20px 15px 20px;
     font-size: $font-size-md
 }
 
 .infocard-main-content {
-    padding: 0 25px;
+    padding: 0 20px;
 }
 
 .button-fixed-bottom {
@@ -237,6 +243,29 @@ input {
     font-size: $font-size-md;
     font-weight: bolder;
     color: black;
+}
+
+.circular-button-outer {
+    background-color: $tandem-blue;
+    border-radius: 100%;
+    height: 55px;
+    width: 55px;
+    box-shadow: $shadow;
+    position: fixed;
+    display: flex;
+    right: 15px;
+    bottom: 15px;
+}
+
+.circular-button-inner {
+    color: white;
+    margin: auto;
+    display: flex;
+    img {
+        height: 40px;
+        width: 40px;
+        margin: auto;
+    }
 }
 
 // styles that overwrite existing styles 
