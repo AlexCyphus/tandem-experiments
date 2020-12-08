@@ -1,8 +1,26 @@
 import axios from 'axios'
 
 export const tp = (name) => {
-  // const NativeApp = window.NativeApp // real version
-  const NativeApp = {sendTrackingPoint: (name) => {console.log(name)}} // mock version
+  // set up passed down tp functions
+  var NativeApp;
+
+  // if on Android
+  if (window.NativeApp){NativeApp = window.NativeApp}
+  
+  // if on iOS
+  else if (window.webkit){
+    NativeApp = {
+      sendTrackingPoint: (name, val=true) => window.webkit.messageHandlers.sendTrackingPoint.postMessage({name: name, value: val})
+    }
+  }
+  
+  // if on web mock version
+  else {
+    NativeApp = {
+      sendTrackingPoint: (name) => {console.log(name)}
+    }
+  }
+
   if (name == undefined){return null}
   const prefix = "Exp_Grp_"
   name = prefix + name

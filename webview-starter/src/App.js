@@ -27,6 +27,8 @@ class App extends React.Component {
   render(){
     return (
       <div className="App">
+        <button onClick={() => tp('testbtn1')}> testbtn1 </button>
+        <button onClick={() => tp('testbtn2')}> testbtn2 </button>
         <HeaderTitle title={'I am category'}/>
         <Slider 
           title1={"Hello"}
