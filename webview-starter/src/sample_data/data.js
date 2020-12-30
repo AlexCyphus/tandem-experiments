@@ -1,27 +1,3 @@
-// for reference don't modify 
-const structure = {
-    "users": [
-        {
-            "firstName": String,
-            "lastName": String,
-            "gender": String,
-            "image": String,
-            "languages": [String]
-        }
-    ],
-    "topics": [
-        {
-            "title": String,
-            "description": String, // optional = null 
-            "type": String // optional 
-        }
-    ],
-    "flags": {
-        "es": [String],
-        "en": [String]
-    },
-}
-
 // editable data
 const data = {
     "users": [
@@ -113,12 +89,12 @@ const data = {
     "topics": [
         {
             "title": "Grammar tips",
-            "description": null,
+            "description": "What are some useful grammar tips that you learned?",
             "type": "serious"
         },
         {
             "title": "Useful vocab + phrases",
-            "description": null,
+            "description": "What are some things that you say all the time?",
             "type": "serious"
         },
         {
@@ -133,7 +109,7 @@ const data = {
         },
         {
             "title": "Tell me your favorite ways to learn?",
-            "description": null,
+            "description": "What is the most helpful or fun ways to learn a language?",
             "type": "serious"
         },
         {
@@ -153,7 +129,7 @@ const data = {
         },
         {
             "title": "Exploring nature",
-            "description": null,
+            "description": "For nature lovers around the world.",
             "type": "relaxed"
         },
         {
@@ -178,12 +154,12 @@ const data = {
         },
         {
             "title": "What is the meaning of life?",
-            "description": null,
+            "description": "??????",
             "type": "relaxed"
         },
         {
             "title": "Introduce yourself!",
-            "description": null,
+            "description": "Meet new Tandem members and practice introducing yourself.",
             "type": "relaxed"
         },
         {
