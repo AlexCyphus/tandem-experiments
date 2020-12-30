@@ -22,7 +22,7 @@ export const tp = (name) => {
   }
 
   if (name == undefined){return null}
-  const prefix = "Exp_Grp_"
+  const prefix = "Exp_"
   name = prefix + name
   NativeApp.sendTrackingPoint(name)
 }
