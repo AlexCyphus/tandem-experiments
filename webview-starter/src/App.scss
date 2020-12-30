@@ -3,6 +3,7 @@
 
 $tandem-blue: #22C1D7;
 $tandem-pink: #ED5481;
+$dark-blue: #2C37D0;
 $light-grey: #cecece7a;
 $dark-grey: #616161;
 $row-height: 100px;
@@ -46,14 +47,18 @@ $horizontal-padding: 17px;
 
 .blue-background {background-color: $tandem-blue;}
 .pink-background {background-color: $tandem-pink;}
-.bold-pink {
-    color: $tandem-pink;
-    font-weight: bold;
-}
-.bold-blue {
-    color: $tandem-blue;
-    font-weight: bold;
-}
+
+// text
+.bold {font-weight: bold;}
+.bolder {font-weight: bolder;}
+.blue-text {color: $tandem-blue}
+.pink-text {color: $tandem-pink}
+.text-xs {font-size: $font-size-xs}
+.text-sm {font-size: $font-size-sm}
+.text-md {font-size: $font-size-md}
+.text-lg {font-size: $font-size-lg}
+
+.grey-line {border-top: 1px $light-grey solid;}
 
 // components/ActionButton.js
 .action-button-container {
@@ -148,7 +153,7 @@ $horizontal-padding: 17px;
     background-color: white;
     padding: 15px 5vw;
     width: 80vw;
-    left: calc(5vw);
+    left: 10vw;
     top: 50px;
     border-radius: 15px;
 }
