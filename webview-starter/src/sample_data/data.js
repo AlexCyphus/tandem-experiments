@@ -193,18 +193,21 @@ const data = {
         }
     ],
     "flags": {
-        "es": ['./sample_data/flags/argentina.png', './sample_data/flags/chile.png', './sample_data/flags/colombia.png', './sample_data/flags/cuba.png', './sample_data/flags/dominican-republic.png', './sample_data/flags/el-salvador.png', './sample_data/flags/honduras.png', './sample_data/flags/mexico.png', './sample_data/flags/panama.png', './sample_data/flags/peru.png', './sample_data/flags/spain.png', './sample_data/flags/venezuela.png'],
-        "en": ['./sample_data/flags/australia.png', './sample_data/flags/canada.png', './sample_data/flags/ireland.png', './sample_data/flags/jamaica.png', './sample_data/flags/new-zealand.png', './sample_data/flags/south-africa.png', './sample_data/flags/united-kingdom.png', './sample_data/flags/united-states.png'],
-        "de": ['./sample_data/flags/austria.png', './sample_data/flags/germany.png', './sample_data/flags/switzerland.png'],
-        "pt": ['./sample_data/flags/brazil.png', './sample_data/flags/portugal.png'],
-        "fr": ['./sample_data/flags/belgium.png', './sample_data/flags/canada.png', './sample_data/flags/france.png'],
-        "ko": ['./sample_data/flags/south-korea.png'],
-        "zh": ['./sample_data/flags/china.png'],
-        "jp": ['./sample_data/flags/japan.png'],
-        "ru": ['./sample_data/flags/russia.png'],
-        "it": ['./sample_data/flags/italy.png'],
-        "misc": ['./sample_data/flags/croatia.png','./sample_data/flags/iceland.png', './sample_data/flags/india.png', './sample_data/flags/netherlands.png', './sample_data/flags/philippines.png', './sample_data/flags/slovakia.png', './sample_data/flags/sweden.png', './sample_data/flags/thailand.png', './sample_data/flags/turkey.png']
+        "es": ['./flags/argentina.png', './flags/chile.png', './flags/colombia.png', './flags/cuba.png', './flags/dominican-republic.png', './flags/el-salvador.png', './flags/honduras.png', './flags/mexico.png', './flags/panama.png', './flags/peru.png', './flags/spain.png', './flags/venezuela.png'],
+        "en": ['./flags/australia.png', './flags/canada.png', './flags/ireland.png', './flags/jamaica.png', './flags/new-zealand.png', './flags/south-africa.png', './flags/united-kingdom.png', './flags/united-states.png'],
+        "de": ['./flags/austria.png', './flags/germany.png', './flags/switzerland.png'],
+        "pt": ['./flags/brazil.png', './flags/portugal.png'],
+        "fr": ['./flags/belgium.png', './flags/canada.png', './flags/france.png'],
+        "ko": ['./flags/south-korea.png'],
+        "zh": ['./flags/china.png'],
+        "jp": ['./flags/japan.png'],
+        "ru": ['./flags/russia.png'],
+        "it": ['./flags/italy.png'],
+        "misc": ['./flags/croatia.png','./flags/iceland.png', './flags/india.png', './flags/netherlands.png', './flags/philippines.png', './flags/slovakia.png', './flags/sweden.png', './flags/thailand.png', './flags/turkey.png']
     },
+    "vectors": {
+        "faces": ['./vectors/face-1.svg', './vectors/face-2.svg', './vectors/face-3.svg', './vectors/face-4.svg', './vectors/face-5.svg', './vectors/face-6.svg', './vectors/face-7.svg', './vectors/face-8.svg', './vectors/face-9.svg']
+    }
 }
 
 export default data
