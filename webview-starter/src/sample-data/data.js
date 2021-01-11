@@ -1,4 +1,3 @@
-// editable data
 const data = {
     "users": [
         {

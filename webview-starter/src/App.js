@@ -7,7 +7,7 @@ import Popup from './components/Popup.js';
 import InfoCard from './components/InfoCard.js';
 import HeaderTitle from './components/HeaderTitle.js';
 import FixedButton from './components/FixedButton.js';
-import {tp, shuffleArray, postToSheets} from "./functions.js"
+import {buildTP, shuffleArray, postToSheets} from "./functions.js"
 
 class App extends React.Component {
   constructor(props) {
