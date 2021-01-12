@@ -5,8 +5,6 @@ export const buildTP = (prefix) => {
     // set up passed down tp functions
     var NativeApp;
 
-    const window = 5
-
     // if on Android
     if (window.NativeApp){NativeApp = window.NativeApp}
     

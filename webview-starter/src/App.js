@@ -26,9 +26,17 @@ class App extends React.Component {
     this.setState({sliderScreen: desiredSliderScreen})
   }
 
-  render(){
+  componentDidMount() {
+    // create tracking point function
+    const tp = buildTP('prefix')
 
-    const tp = buildTP('OurExperiment')
+    // get device type 
+    
+    // parse data 
+
+  }
+
+  render(){
 
     const MainContent = () => {
       return (
