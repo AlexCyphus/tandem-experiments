@@ -43,7 +43,8 @@ class App extends React.Component {
 
     const MainContent = () => {
       return (
-        <div className="App">
+      <div className="App">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"></meta>
       <button onClick={() => this.tp('testbtn1')}> testbtn1 </button>
       <button onClick={() => this.tp('testbtn2')}> testbtn2 </button>
       <HeaderTitle title={'I am category'}/>
