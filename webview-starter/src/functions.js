@@ -4,12 +4,19 @@ export const buildTP = (prefix) => {
   return (suffix) => {
     // set up passed down tp functions
     var NativeApp;
+    let name;
+
+    const capitalize = (word) => word.charAt(0).toUpperCase() + word.slice(1);
 
     // if on Android
-    if (window.NativeApp){NativeApp = window.NativeApp}
+    if (window.NativeApp){
+      name = "Exp_" + capitalize(prefix) + "_" + capitalize(suffix)
+      NativeApp = window.NativeApp
+    }
     
     // if on iOS
     else if (window.webkit){
+      name = capitalize(prefix) + "_" + capitalize(suffix)
       NativeApp = {
         sendTrackingPoint: (name, val=true) => window.webkit.messageHandlers.sendTrackingPoint.postMessage({name: name, value: val})
       }
@@ -17,15 +24,13 @@ export const buildTP = (prefix) => {
     
     // if on web mock version
     else {
+      name = "Exp_" + capitalize(prefix) + "_" + capitalize(suffix)
       NativeApp = {
         sendTrackingPoint: (name) => {console.log(name)}
       }
     }
 
-    const capitalize = (word) => word.charAt(0).toUpperCase() + word.slice(1);
-
     if (suffix == undefined){return null}
-    const name = "Exp_" + capitalize(prefix) + "_" + capitalize(suffix)
 
     if (name.split(" ").length > 1) return console.error("Spaces aren't allowed in tracking points")
     else return NativeApp.sendTrackingPoint(name)
