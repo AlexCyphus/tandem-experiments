@@ -19,6 +19,7 @@ $horizontal-padding: 17px;
     text-decoration: none;
     font-family: Roboto;
     font-weight: 300;
+    box-sizing: border-box;
     font-size: $font-size-sm;
     -webkit-user-select: none; /* Safari */        
     user-select: none; /* Standard */
@@ -117,7 +118,7 @@ body {
 
 // components/Row.js
 .row-container {
-    width: fit-content;
+    width: 100%;
     margin: auto;
     min-height: $row-height;
     border-bottom: 1px $light-grey solid;

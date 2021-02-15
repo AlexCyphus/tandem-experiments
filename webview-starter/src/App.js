@@ -28,7 +28,6 @@ class App extends React.Component {
 
   componentDidMount() {
     // create tracking point function
-    const tp = buildTP('prefix')
 
     // get device type 
     
@@ -36,13 +35,17 @@ class App extends React.Component {
 
   }
 
+  tp(action){
+    return buildTP('testwebview')(action)
+  }
+
   render(){
 
     const MainContent = () => {
       return (
         <div className="App">
-      <button onClick={() => tp('testbtn1')}> testbtn1 </button>
-      <button onClick={() => tp('testbtn2')}> testbtn2 </button>
+      <button onClick={() => this.tp('testbtn1')}> testbtn1 </button>
+      <button onClick={() => this.tp('testbtn2')}> testbtn2 </button>
       <HeaderTitle title={'I am category'}/>
       <Slider 
         title1={"Hello"}
@@ -56,7 +59,7 @@ class App extends React.Component {
       <Row title="Computer McComputerface" image={"/users/chelsea.jpg"}>
         <p>Now I can put anything I want in here here here here here here here here here here here here here here here here here here here here here here here here here here here here here here here here here here here here here here here here here here here here here</p>
       </Row>
-      <ActionButton text={"hello world"} color={"blue"} close={true}/>
+      <ActionButton text={"hello world"} color={"blue"} close={true} key={1}/>
       {this.state.popup ? <Popup buttonText={"I am button"} text="i am description" placeholder="i am placeholder" title="poppy">
         <p>hello</p>
         <p>hello hello hello v hello vvhellohellohello hello hello hello hello hello hello hello hello v</p>
