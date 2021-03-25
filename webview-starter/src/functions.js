@@ -49,3 +49,21 @@ export const postToSheets = (baseUrl, firstEl, secondEl) => {
   let url = baseUrl + "?groupName=" + firstEl + "&privacy=" + secondEl // for testing
   return axios.get(url)
 }
+
+export const getData = () => {
+  // if android 
+  if (window.NativeApp){
+    myPartners = window.NativeApp.getPartners()
+    myProfile = window.NativeApp.getMyProfile()
+    myCurrency = window.NativeApp.getCurrency()
+  }
+  
+  // if ios 
+  else if (window.webkit){
+    // automatically assigns values to above variables
+    window.webkit.messageHandlers.getMyProfile.postMessage({});
+    window.webkit.messageHandlers.getMyPartners.postMessage({});
+    window.webkit.messageHandlers.getMyCurrency.postMessage({});
+    window.webkit.messageHandlers.getDarkModeEnabled.postMessage({});
+  }
+}

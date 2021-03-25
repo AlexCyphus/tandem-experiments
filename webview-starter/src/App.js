@@ -8,7 +8,7 @@ import InfoCard from './components/InfoCard.js';
 import HeaderTitle from './components/HeaderTitle.js';
 import FixedButton from './components/FixedButton.js';
 import DarkModeWrapper from './components/DarkModeWrapper.js'
-import {buildTP, shuffleArray, postToSheets} from "./functions.js"
+import {buildTP, shuffleArray, postToSheets, getData} from "./functions.js"
 
 class App extends React.Component {
   constructor(props) {
@@ -17,7 +17,7 @@ class App extends React.Component {
       sliderScreen: 0,
       popup: false,
       infocard: false,
-      dark: true
+      dark: false
     }
     this.handleSliderChange = this.handleSliderChange.bind(this)
   }
@@ -26,12 +26,24 @@ class App extends React.Component {
     this.setState({sliderScreen: desiredSliderScreen})
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     // create tracking point function
-
-    // get device type 
+    
     
     // parse data 
+    let myProfile;
+    let myPartners;
+    let myCurrency;
+    let isDarkModeEnabled = false;
+
+    await getData()
+
+    this.setState({
+      dark: isDarkModeEnabled,
+      currency: myCurrency,
+      partners: myPartners,
+      profile: myProfile,
+    })
 
   }
 
