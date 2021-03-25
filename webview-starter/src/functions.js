@@ -76,6 +76,6 @@ export const getData = () => {
     myProfile: myProfile,
     myPartners: myPartners,
     myCurrency: myCurrency,
-    isDarkModeEnabled: isDarkModeEnabled
+    isDarkModeEnabled: false
   }
 }

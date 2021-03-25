@@ -50,9 +50,15 @@ class App extends React.Component {
     const MainContent = () => {
       return (
       <div className="App">
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"></meta>
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"></meta>
       <button onClick={() => this.tp('testbtn1')}> testbtn1 </button>
       <button onClick={() => this.tp('testbtn2')}> testbtn2 </button>
+      <div>
+        <p className="header-title">currency:</p> <span><pre>{JSON.stringify(this.state.currency)}</pre></span>
+        <p className="header-title">dark:</p> <span><pre>{JSON.stringify(this.state.dark)}</pre></span>
+        <p className="header-title">partners:</p> <span><pre>{JSON.stringify(this.state.partners)}</pre></span>
+        <p className="header-title">profile:</p> <span><pre>{JSON.stringify(this.state.profile)}</pre></span>
+      </div>
       <HeaderTitle title={'I am category'}/>
       <Slider 
         title1={"Hello"}
