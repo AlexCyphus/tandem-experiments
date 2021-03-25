@@ -17,7 +17,10 @@ class App extends React.Component {
       sliderScreen: 0,
       popup: false,
       infocard: false,
-      dark: false
+      dark: false,
+      currency: null,
+      partners: undefined,
+      profile: undefined
     }
     this.handleSliderChange = this.handleSliderChange.bind(this)
   }
@@ -26,27 +29,18 @@ class App extends React.Component {
     this.setState({sliderScreen: desiredSliderScreen})
   }
 
-  async componentDidMount() {
-    // create tracking point function
-    
-    
-    // parse data 
-    let myProfile;
-    let myPartners;
-    let myCurrency;
-    let isDarkModeEnabled = false;
-
-    await getData()
+  componentDidMount() {  
+    const data = getData()
 
     this.setState({
-      dark: isDarkModeEnabled,
-      currency: myCurrency,
-      partners: myPartners,
-      profile: myProfile,
-    })
-
+      dark: data.isDarkModeEnabled,
+      currency: data.myCurrency,
+      partners: data.myPartners,
+      profile: data.myProfile,
+    }, console.log(this.state))
   }
 
+  // to be updated with every experiment
   tp(action){
     return buildTP('testwebview')(action)
   }
@@ -68,6 +62,7 @@ class App extends React.Component {
       />
       <Row title="Computer McComputerface" image={"/users/ranika.jpg"} roundImage={true}>
         <p>Now I can put anything I want in here</p>
+        <pre>{JSON.stringify(this.state)}</pre>
       </Row>
       <Row title="Computer McComputerface" image={"/users/chelsea.jpg"}>
         <p>Now I can put anything I want in here here here here here here here here here here here here here here here here here here here here here here here here here here here here here here here here here here here here here here here here here here here here here</p>

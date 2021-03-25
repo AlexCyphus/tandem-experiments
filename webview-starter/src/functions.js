@@ -51,6 +51,11 @@ export const postToSheets = (baseUrl, firstEl, secondEl) => {
 }
 
 export const getData = () => {
+  let myProfile;
+  let myPartners;
+  let myCurrency;
+  let isDarkModeEnabled = false;
+
   // if android 
   if (window.NativeApp){
     myPartners = window.NativeApp.getPartners()
@@ -65,5 +70,12 @@ export const getData = () => {
     window.webkit.messageHandlers.getMyPartners.postMessage({});
     window.webkit.messageHandlers.getMyCurrency.postMessage({});
     window.webkit.messageHandlers.getDarkModeEnabled.postMessage({});
+  }
+
+  return {
+    myProfile: myProfile,
+    myPartners: myPartners,
+    myCurrency: myCurrency,
+    isDarkModeEnabled: isDarkModeEnabled
   }
 }
