@@ -11,8 +11,6 @@ import DarkModeWrapper from './components/DarkModeWrapper.js'
 import {buildTP, shuffleArray, postToSheets, getData} from "./functions.js"
 
 
-let showMyPartners = () => {}
-
 class App extends React.Component {
   constructor(props) {
     super(props)
@@ -32,7 +30,7 @@ class App extends React.Component {
     this.setState({sliderScreen: desiredSliderScreen})
   }
 
-  componentWillMount() {
+  async componentWillMount() {
     if (window.NativeApp){
       this.setState({
         partners: window.NativeApp.getPartners(),
@@ -43,36 +41,10 @@ class App extends React.Component {
 
     // if ios 
     else if (window.webkit){
-      var myProfile;
-      var myPartners;
-      var myCurrency;
-      var isDarkModeEnabled;
-
-      function setMyProfile(profile) {
-          myProfile = profile;
-      }
-      window.setMyPartners = (partners) => {
-          myPartners = partners;
-      }
-      function setCurrency(currency) {
-          myCurrency = currency;
-      }
-      function setDarkModeEnabled(enabled) {
-          isDarkModeEnabled = enabled;
-      }
-      function showMyProfile() {
-          document.getElementById('my_profile').innerHTML = myProfile;
-      }
-      showMyPartners = () => {
-          document.getElementById('partners').innerHTML = myPartners;
-      }
-      function showMyCurrency() {
-          document.getElementById('currency').innerHTML = myCurrency;
-      }
-      function showDarkModeEnabled() {
-          document.getElementById('darkMode').innerHTML = isDarkModeEnabled;
-      }
-
+      window.setMyProfile = profile => this.setState({profile: profile});
+      window.setMyPartners = partners => this.setState({partners: partners});
+      window.setCurrency = currency => this.setState({currency: currency});
+      window.setDarkModeEnabled = enabled => this.setState({dark: enabled});
       window.webkit.messageHandlers.getMyProfile.postMessage({});
       window.webkit.messageHandlers.getMyPartners.postMessage({});
       window.webkit.messageHandlers.getMyCurrency.postMessage({});
@@ -85,23 +57,19 @@ class App extends React.Component {
     return buildTP('testwebview')(action)
   }
 
-  clickhandler(){
-    // document.getElementById('header-title').innerHTML = JSON.stringify(myPartners)
-  }
-
   render(){
 
     const MainContent = () => {
       return (
       <div className="App">
       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"></meta>
-      <button onClick={() => showMyPartners()}> testbtn1 </button>
+      <button onClick={() => this.tp('testbtn2')}> testbtn1 </button>
       <button onClick={() => this.tp('testbtn2')}> testbtn2 </button>
       <div>
-        <p onClick={this.clickhandler} className="header-title" id="header-title">currencys:</p> <span><pre>{JSON.stringify(this.state.currency)}</pre></span>
-        <p className="header-title">dark:</p> <span><pre>{JSON.stringify(this.state.dark)}</pre></span>
-        <p className="header-title" id="partners">partners:</p> <span><pre>{JSON.stringify(this.state.partners)}</pre></span>
-        <p className="header-title">profile:</p> <span><pre>{JSON.stringify(this.state.profile)}</pre></span>
+        <p className="header-title" id="header-title">currencys:</p> <span><p>{JSON.stringify(this.state.currency)}</p></span>
+        <p className="header-title">dark:</p> <span><p>{JSON.stringify(this.state.dark)}</p></span>
+        <p className="header-title" id="partners">partners:</p> <span><p>{JSON.stringify(this.state.partners)}</p></span>
+        <p className="header-title">profile:</p> <span><p>{JSON.stringify(this.state.profile)}</p></span>
         <p>{JSON.stringify(this.state)}</p>
       </div>
       <HeaderTitle title={'I am category'}/>
@@ -113,7 +81,7 @@ class App extends React.Component {
       />
       <Row title="Computer McComputerface" image={"/users/ranika.jpg"} roundImage={true}>
         <p>Now I can put anything I want in here</p>
-        <pre>{JSON.stringify(this.state)}</pre>
+        <p>{JSON.stringify(this.state)}</p>
       </Row>
       <Row title="Computer McComputerface" image={"/users/chelsea.jpg"}>
         <p>Now I can put anything I want in here here here here here here here here here here here here here here here here here here here here here here here here here here hello here here here here here here here here here here here here here here here here here here</p>
