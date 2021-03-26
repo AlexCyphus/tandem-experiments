@@ -30,21 +30,21 @@ class App extends React.Component {
     this.setState({sliderScreen: desiredSliderScreen})
   }
 
-  async componentWillMount() {
+  componentWillMount() {
     if (window.NativeApp){
       this.setState({
-        partners: window.NativeApp.getPartners(),
-        profile: window.NativeApp.getMyProfile(),
+        partners: JSON.parse(window.NativeApp.getPartners()),
+        profile: JSON.parse(window.NativeApp.getMyProfile()),
         currency: window.NativeApp.getCurrency()
       })
     }
 
     // if ios 
     else if (window.webkit){
-      window.setMyProfile = profile => this.setState({profile: profile});
-      window.setMyPartners = partners => this.setState({partners: partners});
+      window.setMyProfile = profile => this.setState({profile: JSON.parse(profile)});
+      window.setMyPartners = partners => this.setState({partners: JSON.parse(partners)});
       window.setCurrency = currency => this.setState({currency: currency});
-      window.setDarkModeEnabled = enabled => this.setState({dark: enabled});
+      window.setDarkModeEnabled = enabled => this.setState({dark: JSON.parse(enabled)});
       window.webkit.messageHandlers.getMyProfile.postMessage({});
       window.webkit.messageHandlers.getMyPartners.postMessage({});
       window.webkit.messageHandlers.getMyCurrency.postMessage({});
@@ -65,13 +65,7 @@ class App extends React.Component {
       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"></meta>
       <button onClick={() => this.tp('testbtn2')}> testbtn1 </button>
       <button onClick={() => this.tp('testbtn2')}> testbtn2 </button>
-      <div>
-        <p className="header-title" id="header-title">currencys:</p> <span><p>{JSON.stringify(this.state.currency)}</p></span>
-        <p className="header-title">dark:</p> <span><p>{JSON.stringify(this.state.dark)}</p></span>
-        <p className="header-title" id="partners">partners:</p> <span><p>{JSON.stringify(this.state.partners)}</p></span>
-        <p className="header-title">profile:</p> <span><p>{JSON.stringify(this.state.profile)}</p></span>
-        <p>{JSON.stringify(this.state)}</p>
-      </div>
+      <pre>{JSON.stringify(this.state.partners)}</pre>
       <HeaderTitle title={'I am category'}/>
       <Slider 
         title1={"Hello"}
@@ -79,11 +73,10 @@ class App extends React.Component {
         sliderScreen={this.state.sliderScreen}
         handleSliderChange={this.handleSliderChange}
       />
-      <Row title="Computer McComputerface" image={"/users/ranika.jpg"} roundImage={true}>
+      <Row title={this.state.partners[0] && this.state.partners[0].firstName} image={this.state.partners[0] && this.state.partners[0].photo} roundImage={true}>
         <p>Now I can put anything I want in here</p>
-        <p>{JSON.stringify(this.state)}</p>
       </Row>
-      <Row title="Computer McComputerface" image={"/users/chelsea.jpg"}>
+      <Row title="Computer McComputerface" image={"/users/chelsea.jpg"} localImage={true}>
         <p>Now I can put anything I want in here here here here here here here here here here here here here here here here here here here here here here here here here here hello here here here here here here here here here here here here here here here here here here</p>
       </Row>
       <ActionButton text={"hello world"} color={"blue"} close={true} key={1}/>
