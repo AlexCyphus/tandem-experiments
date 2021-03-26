@@ -10,10 +10,8 @@ import FixedButton from './components/FixedButton.js';
 import DarkModeWrapper from './components/DarkModeWrapper.js'
 import {buildTP, shuffleArray, postToSheets, getData} from "./functions.js"
 
-var myCurrency;
-var myPartners;
-var myProfile;
-var isDarkModeEnabled;
+
+let showMyPartners = () => {}
 
 class App extends React.Component {
   constructor(props) {
@@ -34,7 +32,7 @@ class App extends React.Component {
     this.setState({sliderScreen: desiredSliderScreen})
   }
 
-  componentDidMount() {
+  componentWillMount() {
     if (window.NativeApp){
       this.setState({
         partners: window.NativeApp.getPartners(),
@@ -45,28 +43,40 @@ class App extends React.Component {
 
     // if ios 
     else if (window.webkit){
-    
-      while (myProfile == undefined){
-        window.webkit.messageHandlers.getMyProfile.postMessage({});
+      var myProfile;
+      var myPartners;
+      var myCurrency;
+      var isDarkModeEnabled;
+
+      function setMyProfile(profile) {
+          myProfile = profile;
       }
-      // // automatically assigns values to above variables
-      const setMyProfile = (profile) => myProfile = profile
-      // }
+      window.setMyPartners = (partners) => {
+          myPartners = partners;
+      }
+      function setCurrency(currency) {
+          myCurrency = currency;
+      }
+      function setDarkModeEnabled(enabled) {
+          isDarkModeEnabled = enabled;
+      }
+      function showMyProfile() {
+          document.getElementById('my_profile').innerHTML = myProfile;
+      }
+      showMyPartners = () => {
+          document.getElementById('partners').innerHTML = myPartners;
+      }
+      function showMyCurrency() {
+          document.getElementById('currency').innerHTML = myCurrency;
+      }
+      function showDarkModeEnabled() {
+          document.getElementById('darkMode').innerHTML = isDarkModeEnabled;
+      }
 
-      function setMyPartners(partners) {myPartners = partners}
-
-      // function setCurrency(currency) {
-      //     myCurrency = currency;
-      // }
-      // function setDarkModeEnabled(enabled) {
-      //   this.setState({
-      //     dark: enabled
-      //   })
-      // }
-      
-      // window.webkit.messageHandlers.getMyPartners.postMessage({});
-      // window.webkit.messageHandlers.getMyCurrency.postMessage({});
-      // window.webkit.messageHandlers.getDarkModeEnabled.postMessage({});
+      window.webkit.messageHandlers.getMyProfile.postMessage({});
+      window.webkit.messageHandlers.getMyPartners.postMessage({});
+      window.webkit.messageHandlers.getMyCurrency.postMessage({});
+      window.webkit.messageHandlers.getDarkModeEnabled.postMessage({});
     }
   }
 
@@ -76,7 +86,7 @@ class App extends React.Component {
   }
 
   clickhandler(){
-    document.getElementById('header-title').innerHTML = JSON.stringify(myProfile)
+    // document.getElementById('header-title').innerHTML = JSON.stringify(myPartners)
   }
 
   render(){
@@ -85,12 +95,12 @@ class App extends React.Component {
       return (
       <div className="App">
       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"></meta>
-      <button onClick={() => this.tp('testbtn1')}> testbtn1 </button>
+      <button onClick={() => showMyPartners()}> testbtn1 </button>
       <button onClick={() => this.tp('testbtn2')}> testbtn2 </button>
       <div>
         <p onClick={this.clickhandler} className="header-title" id="header-title">currencys:</p> <span><pre>{JSON.stringify(this.state.currency)}</pre></span>
         <p className="header-title">dark:</p> <span><pre>{JSON.stringify(this.state.dark)}</pre></span>
-        <p className="header-title">partners:</p> <span><pre>{JSON.stringify(this.state.partners)}</pre></span>
+        <p className="header-title" id="partners">partners:</p> <span><pre>{JSON.stringify(this.state.partners)}</pre></span>
         <p className="header-title">profile:</p> <span><pre>{JSON.stringify(this.state.profile)}</pre></span>
         <p>{JSON.stringify(this.state)}</p>
       </div>
