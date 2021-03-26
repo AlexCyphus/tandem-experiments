@@ -50,32 +50,19 @@ export const postToSheets = (baseUrl, firstEl, secondEl) => {
   return axios.get(url)
 }
 
+var myProfile;
+var myPartners;
+var myCurrency;
+var isDarkModeEnabled = false;
+
 export const getData = () => {
-  let myProfile;
-  let myPartners;
-  let myCurrency;
-  let isDarkModeEnabled = false;
-
   // if android 
-  if (window.NativeApp){
-    myPartners = window.NativeApp.getPartners()
-    myProfile = window.NativeApp.getMyProfile()
-    myCurrency = window.NativeApp.getCurrency()
-  }
   
-  // if ios 
-  else if (window.webkit){
-    // automatically assigns values to above variables
-    window.webkit.messageHandlers.getMyProfile.postMessage({});
-    window.webkit.messageHandlers.getMyPartners.postMessage({});
-    window.webkit.messageHandlers.getMyCurrency.postMessage({});
-    window.webkit.messageHandlers.getDarkModeEnabled.postMessage({});
-  }
-
+  
   return {
     myProfile: myProfile,
     myPartners: myPartners,
     myCurrency: myCurrency,
-    isDarkModeEnabled: false
+    isDarkModeEnabled: isDarkModeEnabled
   }
 }

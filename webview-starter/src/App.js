@@ -10,6 +10,11 @@ import FixedButton from './components/FixedButton.js';
 import DarkModeWrapper from './components/DarkModeWrapper.js'
 import {buildTP, shuffleArray, postToSheets, getData} from "./functions.js"
 
+var myCurrency;
+var myPartners;
+var myProfile;
+var isDarkModeEnabled;
+
 class App extends React.Component {
   constructor(props) {
     super(props)
@@ -18,9 +23,9 @@ class App extends React.Component {
       popup: false,
       infocard: false,
       dark: false,
-      currency: null,
-      partners: undefined,
-      profile: undefined
+      currency: false,
+      partners: false,
+      profile: false
     }
     this.handleSliderChange = this.handleSliderChange.bind(this)
   }
@@ -29,20 +34,49 @@ class App extends React.Component {
     this.setState({sliderScreen: desiredSliderScreen})
   }
 
-  componentDidMount() {  
-    const data = getData()
+  componentDidMount() {
+    if (window.NativeApp){
+      this.setState({
+        partners: window.NativeApp.getPartners(),
+        profile: window.NativeApp.getMyProfile(),
+        currency: window.NativeApp.getCurrency()
+      })
+    }
 
-    this.setState({
-      dark: data.isDarkModeEnabled,
-      currency: data.myCurrency,
-      partners: data.myPartners,
-      profile: data.myProfile,
-    }, console.log(this.state))
+    // if ios 
+    else if (window.webkit){
+    
+      while (myProfile == undefined){
+        window.webkit.messageHandlers.getMyProfile.postMessage({});
+      }
+      // // automatically assigns values to above variables
+      const setMyProfile = (profile) => myProfile = profile
+      // }
+
+      function setMyPartners(partners) {myPartners = partners}
+
+      // function setCurrency(currency) {
+      //     myCurrency = currency;
+      // }
+      // function setDarkModeEnabled(enabled) {
+      //   this.setState({
+      //     dark: enabled
+      //   })
+      // }
+      
+      // window.webkit.messageHandlers.getMyPartners.postMessage({});
+      // window.webkit.messageHandlers.getMyCurrency.postMessage({});
+      // window.webkit.messageHandlers.getDarkModeEnabled.postMessage({});
+    }
   }
 
   // to be updated with every experiment
   tp(action){
     return buildTP('testwebview')(action)
+  }
+
+  clickhandler(){
+    document.getElementById('header-title').innerHTML = JSON.stringify(myProfile)
   }
 
   render(){
@@ -54,10 +88,11 @@ class App extends React.Component {
       <button onClick={() => this.tp('testbtn1')}> testbtn1 </button>
       <button onClick={() => this.tp('testbtn2')}> testbtn2 </button>
       <div>
-        <p className="header-title">currency:</p> <span><pre>{JSON.stringify(this.state.currency)}</pre></span>
+        <p onClick={this.clickhandler} className="header-title" id="header-title">currencys:</p> <span><pre>{JSON.stringify(this.state.currency)}</pre></span>
         <p className="header-title">dark:</p> <span><pre>{JSON.stringify(this.state.dark)}</pre></span>
         <p className="header-title">partners:</p> <span><pre>{JSON.stringify(this.state.partners)}</pre></span>
         <p className="header-title">profile:</p> <span><pre>{JSON.stringify(this.state.profile)}</pre></span>
+        <p>{JSON.stringify(this.state)}</p>
       </div>
       <HeaderTitle title={'I am category'}/>
       <Slider 
@@ -71,7 +106,7 @@ class App extends React.Component {
         <pre>{JSON.stringify(this.state)}</pre>
       </Row>
       <Row title="Computer McComputerface" image={"/users/chelsea.jpg"}>
-        <p>Now I can put anything I want in here here here here here here here here here here here here here here here here here here here here here here here here here here here here here here here here here here here here here here here here here here here here here</p>
+        <p>Now I can put anything I want in here here here here here here here here here here here here here here here here here here here here here here here here here here hello here here here here here here here here here here here here here here here here here here</p>
       </Row>
       <ActionButton text={"hello world"} color={"blue"} close={true} key={1}/>
       {this.state.popup ? <Popup buttonText={"I am button"} text="i am description" placeholder="i am placeholder" title="poppy">
