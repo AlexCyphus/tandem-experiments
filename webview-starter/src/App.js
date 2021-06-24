@@ -44,7 +44,7 @@ class App extends React.Component {
       window.setMyProfile = profile => this.setState({profile: JSON.parse(profile)});
       window.setMyPartners = partners => this.setState({partners: JSON.parse(partners)});
       window.setCurrency = currency => this.setState({currency: currency});
-      window.setDarkModeEnabled = enabled => this.setState({dark: JSON.parse(enabled)});
+      // window.setDarkModeEnabled = enabled => this.setState({dark: JSON.parse(enabled)});
       window.webkit.messageHandlers.getMyProfile.postMessage({});
       window.webkit.messageHandlers.getMyPartners.postMessage({});
       window.webkit.messageHandlers.getMyCurrency.postMessage({});
@@ -65,7 +65,7 @@ class App extends React.Component {
       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"></meta>
       <button onClick={() => this.tp('testbtn2')}> testbtn1 </button>
       <button onClick={() => this.tp('testbtn2')}> testbtn2 </button>
-      <pre>{JSON.stringify(this.state.partners)}</pre>
+      <p style={{overflowWrap: 'anywhere'}}>{JSON.stringify(this.state)}</p>
       <HeaderTitle title={'I am category'}/>
       <Slider 
         title1={"Hello"}

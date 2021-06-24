@@ -21,9 +21,9 @@ $horizontal-padding: 17px;
     font-weight: 300;
     box-sizing: border-box;
     font-size: $font-size-sm;
-    -webkit-user-select: none; /* Safari */        
-    user-select: none; /* Standard */
-    -webkit-tap-highlight-color: transparent;
+    // -webkit-user-select: none; /* Safari */        
+    // user-select: none; /* Standard */
+    // -webkit-tap-highlight-color: transparent;
     letter-spacing: 0.3px;
     p {margin: 0;}
 }

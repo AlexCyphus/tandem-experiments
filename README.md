@@ -13,14 +13,23 @@ You can then launch it as a regular Firebase REF experiment:
 
 ### available functions 
 
-// tracking points
-`window.NativeApp.sendTrackingPoint(eventName)` => returns nothing
+#### tracking points
+HOF which takes the prefix (like `Grp` or `Cer`) and returns a function that takes the suffix (like `Sub_Open` or `Btn_Click`) and fires the whole tracking point (`Exp_Grp_Sub_Open`). 
 
-// get data
-`window.NativeApp.getMyProfile()` => returns a JSON string to be parsed
-`window.NativeApp.getPartners()` => returns a string of an array of objects to be parsed
+`buildTP(prefix: string)` => returns `function(suffix: string)`
 
-If you're interested in the structure of the data it's at the bottom of this document.
+#### get data
+Data is now automatically saved to the state on mount. If you're interested in the structure of the data it's at the bottom of this document.
+
+#### shuffle array 
+Shuffle the values in an array to provide a different user experience for each user. 
+`shuffleArray(array: [any])` => `[any]`
+
+#### post to sheets
+An unpolished function to get a URl to trigger a Google Script function. 
+
+### dark mode
+In `app.js` the main content is wrapped with `DarkModeWrapper` if dark mode is enabled. This applies `.bigDarkMode` and overrides light mode styles. 
 
 ### webview-starter
 
